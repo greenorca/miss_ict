@@ -24,6 +24,7 @@ Zu jedem Modul werden Nummer, Titel, Fachbereich, Semester *(schwierig wegen kan
 ##Technische Verbesserungsmöglichkeiten
 Die Anwendung ist zunächst aus reinem Eigennutz entstanden und entsprechend insbesondere sicherheitstechnisch verbesserungswürdig.
 
+- *PRIO1:* ajax.php sollte bestehendes wiss_db Objekt weiterverwenden (connection sharing)
 - ordentliches MVC
 - Zugriff auf statische Toolbox- und LBV- files 
 
