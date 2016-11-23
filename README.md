@@ -6,6 +6,12 @@ Fehlende (WISS)-LBVs können mit Modulnummer an schirmer@green-orca.com gesendet
 
 Die Darstellung folgt strikt dem Bauhaus-Prinzip: Form follows function. LBVs und Toolboxen sind von Word in HTML re-konvertiert, damit die Archivierbarkeit und Wartbarkeit sichergestellt ist.
 
+Besonderer Wert wurde auf Usability (für Desktops) gelegt: 
+- ein Klick zu den HANOKS
+- zwei Klicks zu LBV oder Toolbox
+
+Unterstützung für *mobile Spielzeuge* ist vorerst nicht geplant, da es sich um ein Arbeitswerkzeug handelt. Die Oberfläche lässt sich mit einer Auflösung von mind. 1200x800px prima betreiben.
+
 ##Benutzung 
 **Anmeldung**
 user, 0815AlphaBetaGagga!
