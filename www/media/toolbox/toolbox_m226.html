@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav id="TOC">
+<ul>
+<li><a href="#hallo-welt-auf-kommandozeile-1-1">&quot;Hallo Welt&quot; auf Kommandozeile 1-1</a></li>
+<li><a href="#hallo-welt-in-eclipse-2-1">&quot;Hallo Welt&quot; in Eclipse 2-1</a></li>
+<li><a href="#stellenausschreibung-für-roboter-3-1">Stellenausschreibung für Roboter 3-1</a></li>
+<li><a href="#positionsinformation-für-den-roboter-4-1">Positionsinformation für den Roboter 4-1</a></li>
+<li><a href="#marsroboter-findet-steine-4-2">Marsroboter findet Steine 4-2</a></li>
+<li><a href="#roboter-klassendiagramm-5-1">Roboter Klassendiagramm 5-1</a></li>
+<li><a href="#welches-resultat-erscheint-8-1">Welches Resultat erscheint? 8-1</a></li>
+<li><a href="#primitivlinge-vs.-wrapper-8-2">Primitivlinge vs. Wrapper 8-2</a></li>
+<li><a href="#wie-lautet-die-ausgabe-9-1">Wie lautet die Ausgabe? 9-1</a></li>
+<li><a href="#mehrere-roboter-erzeugen-9-2">Mehrere Roboter erzeugen! 9-2</a></li>
+<li><a href="#roboter-landen-zufällig-10-1">Roboter landen zufällig 10-1</a></li>
+<li><a href="#positionen-der-roboter-darstellen-10-2">Positionen der Roboter darstellen! 10-2</a></li>
+<li><a href="#real-life---objekte-11-1">Real Life -&gt; Objekte 11-1</a></li>
+<li><a href="#positionsobjekt-erstellen-13-1">Positionsobjekt erstellen 13-1</a></li>
+<li><a href="#roboter-um-positionsobjekt-erweitern-13-2">Roboter um Positionsobjekt erweitern 13-2</a></li>
+<li><a href="#positionsobjekt-auf-3d-erweitern-13-3">Positionsobjekt auf 3D erweitern 13-3</a></li>
+<li><a href="#pakete-in-java-14-1">Pakete in Java 14-1</a></li>
+<li><a href="#online-dokumentation-15-1">Online Dokumentation 15-1</a></li>
+<li><a href="#robosim-neues-projekt-erstellen-16-1">RoboSim: Neues Projekt erstellen 16-1</a></li>
+<li><a href="#vererbungpolymorphismus-16-10">Vererbung/Polymorphismus 16-10</a></li>
+<li><a href="#robosim-finden-der-wichtigsten-klassen-16-2">RoboSim: Finden der wichtigsten Klassen 16-2</a></li>
+<li><a href="#robosim-die-benutzerschnittstelle-wird-realisiert-16-3">RoboSim: Die Benutzerschnittstelle wird realisiert 16-3</a></li>
+<li><a href="#robosim-vererbung-ist-ein-beziehung-16-4">RoboSim: Vererbung: &quot;ist ein&quot;-Beziehung 16-4</a></li>
+<li><a href="#robosim-simulation-zusammenfügen-16-5">RoboSim: Simulation zusammenfügen 16-5</a></li>
+<li><a href="#robosim-verhalten-erstellen-16-6">RoboSim: Verhalten erstellen 16-6</a></li>
+<li><a href="#robosim-exceptions-16-7">RoboSim: Exceptions 16-7</a></li>
+<li><a href="#robosim-unittest-mit-junit-16-8">RoboSim: Unittest mit JUnit 16-8</a></li>
+<li><a href="#robosim-dokumentation-mit-javadoc-16-9">RoboSim: Dokumentation mit JavaDoc 16-9</a></li>
+</ul>
+</nav>
+<!--
+pandoc -s toolbox_m226.md -o toolbox_m226.html -t html5 --toc --toc-depth 1 --section --self-contained
+-->
+<style>
+body{
+    font-family: sans-serif;
+}
+@media screen{
+h1{
+    font-size: 2em;
+    margin-top:130px;
+}
+nav {
+    width: 35%;
+    display: inline-block;
+    position: fixed;
+    top: 20px;
+}
+
+nav ul{
+    list-style: none;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #777;
+    font-weight: bold;
+}
+
+article{
+    width: 63%;
+     height: 100%;
+     overflow-y: scroll;
+    display: inline-block;
+    padding-left: 7px;
+    position: fixed;
+    top: 20px;
+    left: 36%;
+}
+}
+</style>
+<article>
+<section id="hallo-welt-auf-kommandozeile-1-1" class="level1">
+<h1>&quot;Hallo Welt&quot; auf Kommandozeile 1-1</h1>
+<section id="ziel" class="level2">
+<h2>Ziel</h2>
+<p>Grundwissen erlangen, was ein Java Programm ist und wie die Java VM funktioniert.</p>
+</section>
+<section id="art-der-aufgabe" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe/Projekt/Trainingsaufgabe/Experiment/Teamarbeit usw.</p>
+</section>
+<section id="ausgangslage" class="level2">
+<h2>Ausgangslage</h2>
+<p>Computer mit installierter Java VM.</p>
+</section>
+<section id="aufgabenstellung" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Erstellen Sie eine erste Hallo Welt Applikation wie im Lehrmittel in Kapitel 1.1 beschrieben.</p>
+<p>Tippen Sie dazu das Programm in einem Texteditor ab und speichern sie es als reine Textdatei.</p>
+<p>Kompilieren sie es in einer Konsole mit dem beschriebenen Befehl &quot;javac -d . HalloWelt.java&quot; und führen Sie es mit &quot;java ch.modul226.HalloWelt&quot; aus.</p>
+</section>
+<section id="vorgehensweise" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung. Wenn Sie anstehen, lesen Sie im entsprechenden Teil des Lehrmittels nach und versuchen selbstständig, das Problem zu lösen.</p>
+</section>
+<section id="erwartete-resultate" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Auf der Konsole sollte die entsprechende Ausgabe erscheinen:</p>
+<p>Hallo Welt, Java ist alles andere als kalter Kaffee!</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<p><strong>Referenz:</strong> 226-Uebung 1-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="hallo-welt-in-eclipse-2-1" class="level1">
+<h1>&quot;Hallo Welt&quot; in Eclipse 2-1</h1>
+<section id="ziel-1" class="level2">
+<h2>Ziel</h2>
+<p>Grundwissen erlangen, was ein Java Programm ist und wie die Java VM funktioniert.</p>
+</section>
+<section id="art-der-aufgabe-1" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-1" class="level2">
+<h2>Ausgangslage</h2>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="aufgabenstellung-1" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Starten Sie die Eclipse IDE. Erstellen Sie ein neues Projekt &quot;Experimente&quot;, das Sie in der Folge für Codeexperimente verwenden werden. Erstellen Sie darin gleich einen Quelltextordner (Sourcefolder) &quot;src&quot; worin Sie ihre Quellcodes speichern können. In diesem Ordner &quot;src&quot; können Sie nun ein neues Package &quot;ch.modul226.experimente&quot; erstellen.</p>
+<pre><code>[x] Experimente
+
+  [x] src 
+
+    [x] ch.modul226.experimente</code></pre>
+<p>Erstellen Sie im Package &quot;ch.modul226.experimente&quot; nun eine neue Klasse &quot;HalloWelt&quot;. Die Klasse sollte gleich im Bearbeitungsmodus gezeigt werden und folgenden Inhalt haben (falls nicht doppelklicken Sie einfach auf den Klassennamen links):</p>
+<pre><code>package ch.modul226.experimente;
+
+    public class HalloWelt {
+
+}</code></pre>
+<p>Fügen Sie nun - analog zur vorherigen Aufgabe - die &quot;Main&quot; Methode inklusive Inhalt hinzu.</p>
+<p>Um das Programm aufzurufen, wählen Sie das Menü &quot;Run&quot; bzw. &quot;Ausführen&quot; und wählen den Menüpunkt &quot;Run as...&quot; bzw. &quot;Ausführen als...&quot;, wobei Sie dann die Option &quot;Java Application&quot; wählen. Das Programm &quot;HalloWelt&quot; wird nun ausgeführt und in der Konsolenausgabe sollte der Text erscheinen.</p>
+</section>
+<section id="vorgehensweise-1" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung. Wenn Sie anstehen, lesen Sie im entsprechenden Teil des Lehrmittels nach und versuchen selbstständig, das Problem zu lösen.</p>
+</section>
+<section id="erwartete-resultate-1" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Auf der Eclipse Konsole (in Normalfall unten, sonst einblenden unter dem Menüpunkt &quot;Window&quot;-&gt;&quot;Show view&quot;-&gt;&quot;Console&quot; bzw. &quot;Fenster&quot;-&gt;&quot;Zeige Ansicht&quot;-&gt;&quot;Konsole&quot;) sollte die entsprechende Ausgabe erscheinen:</p>
+<p>Hallo Welt, Java ist alles andere als kalter Kaffee!</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="2" type="1">
+<li>Wir programmieren uns einen Krimi</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 2-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="stellenausschreibung-für-roboter-3-1" class="level1">
+<h1>Stellenausschreibung für Roboter 3-1</h1>
+<section id="ziel-2" class="level2">
+<h2>Ziel</h2>
+<p>Erstes Gefühl für Klassen und Objekte entwickeln</p>
+</section>
+<section id="art-der-aufgabe-2" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-2" class="level2">
+<h2>Ausgangslage</h2>
+<p>Der Student oder die Studentin hat die einführenden Beispiele des Lehrmittels gesehen und verinnerlicht.</p>
+</section>
+<section id="aufgabenstellung-2" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Wir interessieren uns in der Folge für einfache Roboter. Betrachen Sie folgendes Anforderungsblatt (&quot;Stelleninserat&quot;) für einen Roboter, das von der ESA veröffentlicht wird:</p>
+<div style="border:1px solid #555; margin: 5px; padding: 5px; width: 80%;background-color:#ddd;">
+<h3 id="european-space-agency---esa">European Space Agency - ESA</h3>
+<p><em>Dringend Gesucht - Industrieroboter für Mission zum Mars!</em></p>
+<ul>
+<li>Soll klein, robust und langlebig sein, und gehorsam :-)</li>
+<li>Erhält von der Steuerzentrale Befehle und soll entsprechend reagieren.</li>
+<li>Dabei soll er in alle vier Himmelsrichtungen fahren können.</li>
+<li>Soll er prüfen können, ob er auf einem Gesteinsbrocken steht.</li>
+<li>Gesteinsbrocken soll er auch aufnehmen können.</li>
+</ul>
+</div>
+<p>Um ein wenig ein Gefühl für die Anforderung zu kriegen, simulieren Sie diesen Roboter zunächst auf Ihrem Computer.</p>
+<p>Erstellen Sie in Eclipse in Ihrem Experimente Projekt zwei neue Klassen; &quot;Roboter&quot; und &quot;Steuerzentrale&quot;, wobei Sie der Klasse &quot;Steuerzentrale&quot; eine &quot;main&quot; Funktion einfügen (vgl. &quot;HalloWelt&quot;). Die Klasse &quot;Roboter&quot; versehen Sie analog zu den Beispielen im Lehrmittel (Kapitel 3.2) mit Methoden, welche die Funktionalität des oben beschriebenen Roboters umsetzen. Diese Methoden sollen weder Argumente verlangen, noch einen Rückgabewert erzeugen. Verwenden Sie dazu die Bezeichnungen &quot;moveUp&quot;, &quot;moveDown&quot;, &quot;moveLeft&quot;, &quot;moveRight&quot;, &quot;checkForRock&quot;, &quot;pickUpRock&quot; gemäss diesem Schema:</p>
+<pre><code>public void methodenname() {
+
+  // ...
+
+}</code></pre>
+<p>Versehen Sie die Methoden im Moment lediglich mit Bildschirmausgaben, welche beschreiben was der Roboter gerade macht.</p>
+<p>In der Klasse Steuerzentrale instanziieren Sie ein Objekt der Klasse Roboter in eine Instanz &quot;MarsRover&quot;. Geben Sie ihm nun folgende &quot;Anweisungen&quot; durch Methodenaufrufe (vgl. Kapitel 3.4 im Lehrmittel):</p>
+<pre><code>Fahre nach oben.
+
+Fahre nach oben.
+
+Drehe nach links.
+
+Fahre nach oben.
+
+Prüfe ob Gestein vorhanden. 
+
+Fahre nach links.
+
+Prüfe ob Gestein vorhanden. (Sie können annehmen: Hier hätte er dann etwas gefunden.)
+
+Nimm Gestein auf.</code></pre>
+<p>Anschliessend lassen Sie das Programm laufen indem Sie im Menü &quot;Run&quot; bzw. &quot;Ausführen&quot; den Menüpunkt &quot;Run as...&quot; oder &quot;Ausführen als...&quot; auswählen und die Option &quot;Java Application&quot; wählen. Es sollte in der Konsole ein Ablauf von Text erscheinen, der die Handlungen des Roboters beschreibt.</p>
+</section>
+<section id="vorgehensweise-2" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung. Wenn Sie anstehen, lesen Sie im entsprechenden Teil des Lehrmittels nach und versuchen selbstständig, das Problem zu lösen.</p>
+</section>
+<section id="erwartete-resultate-2" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>In der Konsole soll erscheinen:</p>
+<pre><code>Der Roboter fährt ein Feld nach oben!
+
+Der Roboter fährt ein Feld nach oben!
+
+Der Roboter fährt ein Feld nach links!
+
+Der Roboter fährt ein Feld nach oben!
+
+Der Roboter prüft, ob er auf einem Stein steht.
+
+Der Roboter fährt ein Feld nach links!
+
+Der Roboter prüft, ob er auf einem Stein steht.
+
+Der Roboter nimmt den Stein auf.</code></pre>
+<p><strong>Zeitbedarf:</strong> 60 Min.</p>
+<ol start="3" type="1">
+<li>Wir brauchen einen Regisseur</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 3-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="positionsinformation-für-den-roboter-4-1" class="level1">
+<h1>Positionsinformation für den Roboter 4-1</h1>
+<section id="ziel-3" class="level2">
+<h2>Ziel</h2>
+<p>Erste Spracheelemente einsetzen können.</p>
+</section>
+<section id="art-der-aufgabe-3" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-3" class="level2">
+<h2>Ausgangslage</h2>
+<p>Die Studenten und Studentinnen kennen grundsätzliche Programmiermechanismen (Funktionsaufruf, Rückgabewert) bereits von vorhergehenden Modulen. Der genaue Syntax in Java ist dem Lehrmittel zu entnehmen.</p>
+</section>
+<section id="aufgabenstellung-3" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Der Roboter wird so gebaut werden, dass er stets seine aktuelle Position kennt, wenn man ihm die Startposition nennt. Erweitern Sie die Klasse &quot;Roboter&quot; so, dass er seine aktuelle Koordinaten (x/y) mit zwei Instanzvariablen speichert. Fügen Sie also zwei private ganzzahligen (Integer) Instanzvariablen &quot;positionX&quot; und &quot;positionY&quot; hinzu. Wenn Sie nicht mehr wissen, welche Schlüsselwörter dazu nötig sind, konsultieren Sie den Teil A des Lehrmittels. Im Beispiel das dort aufgeführt ist, können Sie sich inspirieren lassen.</p>
+<p>Erweitern Sie den Roboter nun so, dass einerseits mit einer Anweisung &quot;setPosition&quot; die momentane Position bestimmt werden kann. Dazu muss die Methode &quot;setPosition&quot; zwei ganzzahlige Argumente (bzw. Parameter) verlangen. Verwenden Sie diese Signatur:</p>
+<p><code>public void setPosition(Integer x, Integer y)</code></p>
+<p>Zudem soll er bei jeder Bewegung (z.b. &quot;moveUp&quot;) die aktuelle Position aktualisieren (dies durch die Verwendung der Methode setPosition). Bei Bewegungen nach links oder rechts muss also nur die X-Koordinaten angepasst werden. Sie dürfen annehmen, dass - von oben gesehen - sich der Roboter auf einem Koordinatensystem befindet, dessen Ursprung sich in der linken unteren Ecke befindet.</p>
+<p>Dann erstellen Sie noch zwei neue Methoden &quot;getPositionX&quot; und &quot;getPositionY&quot; die keine Argumente verlangen, aber die jeweilige Koordinate als Rückgabewert zurückgeben (Schlüsselwort &quot;return&quot;). Eine letzte Methode &quot;getPosition&quot; soll nun die aktuellen Koordinaten - hübsch in einem Text verpackt - an der Konsole ausgeben.</p>
+<p>Beachten Sie: Strings können mit + konkateniert (zusammengefügt) werden. Um den Stringwert einer Integer &quot;zahl&quot; zu erhalten, verwenden Sie die Methode &quot;toString()&quot;: zahl.toString() gibt also die Zahl als String zurück.</p>
+<p>Erweitern Sie nun auch die Steuerzentrale mit den zwei neuen Anweisungen: Legen sie ganz zu Beginn die Position des Roboters fest (z.B. 100/100) und lassen Sie nach allen Bewegungsanweisungen die aktuelle Position ausgeben.</p>
+<p>Führen Sie das Programm aus.</p>
+</section>
+<section id="vorgehensweise-3" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung. Wenn Sie anstehen, lesen Sie im entsprechenden Teil des Lehrmittels nach und versuchen selbstständig, das Problem zu lösen.</p>
+</section>
+<section id="erwartete-resultate-3" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Auf der Konsole erscheint:</p>
+<pre><code>Der Roboter fährt ein Feld nach oben!
+
+Der Roboter fährt ein Feld nach oben!
+
+Der Roboter fährt ein Feld nach links!
+
+Der Roboter fährt ein Feld nach oben!
+
+Der Roboter prüft, ob er auf einem Stein steht.
+
+Der Roboter fährt ein Feld nach links!
+
+Der Roboter prüft, ob er auf einem Stein steht.
+
+Der Roboter nimmt den Stein auf.
+
+Der Roboter befindet sich: 98/103</code></pre>
+<p><strong>Zeitbedarf:</strong> 60 Min.</p>
+<ol start="4" type="1">
+<li>Weitere Rollen werden definiert</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 4-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="marsroboter-findet-steine-4-2" class="level1">
+<h1>Marsroboter findet Steine 4-2</h1>
+<section id="ziel-4" class="level2">
+<h2>Ziel</h2>
+<p>Erste Spracheelemente einsetzen können.</p>
+</section>
+<section id="art-der-aufgabe-4" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-4" class="level2">
+<h2>Ausgangslage</h2>
+<p>Die Studenten und Studentinnen kennen grundsätzliche Programmiermechanismen (Funktionsaufruf, Rückgabewert) bereits von vorhergehenden Modulen. Der genaue Syntax in Java ist dem Lehrmittel zu entnehmen.</p>
+</section>
+<section id="aufgabenstellung-4" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Neu kann der Roboter selber feststellen, wo er gelandet ist. Dies ist im Moment einfacherweise immer an der selben Position, weshalb wir es dem Roboter fest einprogrammieren können:</p>
+<p>Fügen Sie der Klasse &quot;Roboter&quot; einen Konstruktor hinzu, der die Position des Roboters mit &quot;setPosition&quot; auf 50/50 setzt. Sie können nun den Methodenaufruf &quot;setPosition&quot; in der Klasse &quot;Steuerzentrale&quot; wieder löschen.</p>
+<p>Ein Konstruktor ist einfach eine Methode mit dem selben Namen wie die Klasse. Sie muss &quot;public&quot; sein, sonst kann die Klasse gar nicht zu einem Objekt instanziiert werden. Den Typen des Rückgabewerts den man bei Methoden angibt, lässt man beim Konstruktor weg. Für die Klasse &quot;Roboter&quot; lautet er also:</p>
+<pre><code>public Roboter() {
+
+  super();
+
+  
+
+  // ...
+
+}</code></pre>
+<p>Der Roboter wird nun umgebaut, so dass er über eine Art Gesteinsschublade verfügt, wo er immer die zuletzt aufgenommenen Gesteinsproben darin lagern und untersuchen kann. Passen Sie den Code an die neuen Begebenheiten an.</p>
+<p>Erstellen Sie im selben Package wie &quot;Roboter&quot; und &quot;Steuerzentrale&quot; eine neue Klasse &quot;Stein&quot;. Diese soll - gleich wie der Roboter - auch zwei Instanzenvariablen &quot;positionX&quot; und &quot;positionY&quot; haben, ebenso die Methoden &quot;setPosition&quot;, &quot;getPositionX&quot; und &quot;getPositionY&quot;. Erstellen Sie auch hier einen Konstruktor und lassen Sie dem Stein gleich die Position 48/48 zuordnen. Zudem hat ein Stein noch einen Namen. Fügen Sie also auch noch die Instanzvariable &quot;bezeichnung&quot; sowie einen &quot;Getter&quot; dazu ein: &quot;getBezeichnung&quot;. Die Bezeichnung setzen sie gleich auf &quot;Marsgestein&quot;:</p>
+<pre><code>private String bezeichnung = &quot;Marsgestein&quot;;</code></pre>
+<p>Ändern Sie nun in der Klasse &quot;Roboter&quot; so ab, dass die Methode &quot;pickUpRock&quot; neu einen Parameter vom Typ &quot;Stein&quot; verlangt. Fügen Sie der Klasse &quot;Roboter&quot; zudem eine Instanzvariable &quot;currentRock&quot; vom Typ Stein hinzu, welche immer den Stein beherbergt, den der Roboter gerade aufgenommen hat. Was der Roboter nun noch braucht ist eine Funktion zur Bestimmung des Gesteins. Fügen Sie eine Methode &quot;getRockType&quot; hinzu, die keinen Parameter verlangt und die Bezeichnung des aufgenommenen Steins auf der Konsole ausgeben soll:</p>
+<pre><code>&quot;Beim Gestein in der Schublade handelt es sich um: ...&quot;</code></pre>
+<p>wobei bei den drei Punkten am Schluss die Bezeichnung des Steins erscheinen soll.</p>
+<p>Passen Sie nun die Klasse &quot;Steuerzentrale&quot; so an, dass Sie die neuen Funktionen ausprobieren können:</p>
+<p>Instanziieren Sie nebst dem Marsrover ein neues Objekt &quot;gestein&quot; vom Typ &quot;Stein&quot;.</p>
+<p>Lassen Sie den Roboter nun neu folgende Aktionen vollbringen:</p>
+<pre><code>Fahre nach unten.
+
+Drehe nach links.
+
+Fahre nach links.
+
+Fahre nach unten.
+
+Prüfe ob Gestein vorhanden. 
+
+Gib die aktuelle Position aus.
+
+Nimm Gestein &quot;gestein&quot; auf.
+
+Stelle Typ des Gesteins fest.</code></pre>
+<p>Lassen Sie das Programm laufen. Verändern Sie den Namen des Gesteins in der Klasse &quot;Stein&quot; und lassen Sie das Programm erneut laufen. Die Ausgabe des Typs sollte sich nun auch geändert haben.</p>
+</section>
+<section id="vorgehensweise-4" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung. Wenn Sie anstehen, lesen Sie im entsprechenden Teil des Lehrmittels nach und versuchen selbstständig, das Problem zu lösen.</p>
+</section>
+<section id="erwartete-resultate-4" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Die Ausgabe in der Eclipse Konsole soll so aussehen:</p>
+<pre><code>Der Roboter fährt ein Feld nach unten!
+
+Der Roboter fährt ein Feld nach links!
+
+Der Roboter fährt ein Feld nach links!
+
+Der Roboter fährt ein Feld nach unten!
+
+Der Roboter prüft, ob er auf einem Stein steht.
+
+Der Roboter befindet sich: 48/48
+
+Der Roboter nimmt den Stein auf.
+
+Beim Gestein in der Schublade handelt es sich um: Marsgestein</code></pre>
+<p><strong>Zeitbedarf:</strong> 60 Min.</p>
+<ol start="4" type="1">
+<li>Weitere Rollen werden definiert</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 4-2 AS V1.1.doc</p>
+</section>
+</section>
+<section id="roboter-klassendiagramm-5-1" class="level1">
+<h1>Roboter Klassendiagramm 5-1</h1>
+<section id="ziel-5" class="level2">
+<h2>Ziel</h2>
+<p>Studenten haben ersten Kontakt mit UML.</p>
+</section>
+<section id="art-der-aufgabe-5" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-5" class="level2">
+<h2>Ausgangslage</h2>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="aufgabenstellung-5" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Erstellen Sie von den Klassen &quot;Steuerzentrale&quot;, &quot;Roboter&quot; und &quot;Stein&quot; ein Klassendiagramm.</p>
+<p>Erstellen Sie ein Sequenzdiagramm von den Abläufen in der Steuerzentrale.</p>
+</section>
+<section id="vorgehensweise-5" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung. Wenn Sie anstehen, lesen Sie im entsprechenden Teil des Lehrmittels nach und versuchen selbstständig, das Problem zu lösen.</p>
+</section>
+<section id="erwartete-resultate-5" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Ein Klassendiagramm und ein Sequenzdiagramm der erstellen Klassen und Abläufe.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="5" type="1">
+<li>Grafische Darstellung der Story</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 5-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="welches-resultat-erscheint-8-1" class="level1">
+<h1>Welches Resultat erscheint? 8-1</h1>
+<section id="ziel-6" class="level2">
+<h2>Ziel</h2>
+<p>Datentypen kennen.</p>
+</section>
+<section id="art-der-aufgabe-6" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Trainingsaufgabe</p>
+</section>
+<section id="ausgangslage-6" class="level2">
+<h2>Ausgangslage</h2>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="aufgabenstellung-6" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Bestimmen Sie bei den folgenden Programmen die genaue Ausgabe</p>
+<p>Als Vorbereitung dazu erstellen sie im Package &quot;ch.modul226.experimente&quot; eine neue Klasse &quot;Experimente&quot;. Verwenden Sie diese um in der Folge die Programmstücklein auszuprobieren.</p>
+<ul>
+<li><p>Studieren Sie den gegebenen Quellcode und schreiben Sie auf Papier auf, was als Ausgabe auf der Konsole erscheinen wird.</p></li>
+<li><p>Erstellen Sie das Programm und überprüfen Sie Ihre Erwartung.</p></li>
+<li><p>Suchen Sie nach Begründungen für das Resultat.</p></li>
+</ul>
+<section id="a1-ausgabe-von-berechnungen" class="level3">
+<h3>A1 Ausgabe von Berechnungen</h3>
+<pre><code>/* AusgabeA1.java */ 
+
+public class AusgabeA1 
+
+{ 
+
+    public static void main(String[] args) 
+
+    { 
+
+        System.out.println(&quot;1+2=&quot; + (1+2)); 
+
+    } 
+
+} </code></pre>
+</section>
+<section id="a2-ausgabe-von-variablen" class="level3">
+<h3>A2 Ausgabe von Variablen</h3>
+<pre><code>/* AusgabeA2.java */ 
+
+public class AusgabeA2 
+
+{ 
+
+    public static void main(String[] args) 
+
+    { 
+
+        int x; 
+
+        x=5; 
+
+        System.out.println(&quot;Der Wert von x ist &quot; + x); 
+
+    } 
+
+} </code></pre>
+</section>
+<section id="a3-berechnungen" class="level3">
+<h3>A3 Berechnungen</h3>
+<pre><code>/* AusgabeA3.java */ 
+
+public class AusgabeA3 
+
+{ 
+
+  public static void main(String[] args) 
+
+  { 
+
+    int x; 
+
+    x=5*6+3; 
+
+    System.out.println(&quot;Der Wert von x ist &quot; + x); 
+
+  } 
+
+} </code></pre>
+</section>
+<section id="a4-kombinierte-ausgaben" class="level3">
+<h3>A4 Kombinierte Ausgaben</h3>
+<pre><code>/* AusgabeA4.java */ 
+
+public class AusgabeA4 
+
+{
+
+public static void main(String[] args) 
+
+  { 
+
+    int x=10; 
+
+    double y=2.5; 
+
+    System.out.println(&quot;Die beiden Variablen sind: &quot; + x + y); 
+
+  } 
+
+} </code></pre>
+</section>
+<section id="b-einfache-berechnungen" class="level3">
+<h3>B Einfache Berechnungen</h3>
+<p>Bestimmen Sie bei den folgenden Programmen das Resultat. Beachten Sie dabei die Rundung bei der Ganzzahldivision bzw. die Klammern.</p>
+<p>Vorgehen:</p>
+<ul>
+<li><p>Studieren Sie den gegebenen Quellcode und schreiben Sie auf, was als Ausgabe auf der Konsole erscheinen wird.</p></li>
+<li><p>Erstellen Sie das Programm und überprüfen Sie Ihre Erwartung.</p></li>
+<li><p>Suchen Sie nach Begründungen für das Resultat.</p></li>
+</ul>
+<p>B1 Rundung</p>
+<pre><code>/*BerechnungB1.java */ 
+
+class BerechnungB1 
+
+{ 
+
+  public static void main (String[] args) 
+
+  { 
+
+    int x; 
+
+    x = 2 * (2 – 7) * 35 – 100/4; 
+
+    System.out.print (&quot;Das Resultat ist &quot; + x); 
+
+  } 
+
+} </code></pre>
+</section>
+</section>
+<section id="vorgehensweise-6" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-6" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Eine Liste mit den erwarteten Ergebnissen bzw. Ausgaben der Programme.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="8" type="1">
+<li>Datentypen</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 8-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="primitivlinge-vs.-wrapper-8-2" class="level1">
+<h1>Primitivlinge vs. Wrapper 8-2</h1>
+<section id="ziel-7" class="level2">
+<h2>Ziel</h2>
+<p>Datentypen kennen.</p>
+</section>
+<section id="art-der-aufgabe-7" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-7" class="level2">
+<h2>Ausgangslage</h2>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="aufgabenstellung-7" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Wie Sie im Lehrmittel und/oder Unterricht erfahren haben, existieren in Java zwei Versionen der elementaren Datentypen, eine primitive und eine gewrappte Version.</p>
+<p>Die primitiven Datentypen sind dabei im Sinne der Programmiersprache C maschinennahe Konstrukte, die direkt einen Platz im Speicher adressieren. Die Wrapper hingegen kapseln dieselben Datentypen in Objekte ein, welche dann Annehmlichkeiten und Eigenschaften von Objekten geniessen.</p>
+<p>Öffnen Sie zur Vorbereitung Ihr Projekt &quot;Experimente&quot; und dort die Klasse &quot;Experimente&quot;, wobei Sie die bisherigen Codestücke in der &quot;Main&quot; Methode auskommentieren.</p>
+<p>Erstellen Sie nun für alle elementaren Datentypen (byte, short, int, long, float, double, char, boolean) je eine Variable, wo sie auch einen entsprechenden Wert zuweisen. Tun Sie dasselbe auch für die entsprechenden Wrapperklassen. Diese beginnen mit Grossbuchstaben. Falls Sie nicht genau wissen, wie sie heissen, geben Sie den ersten Buchstaben ein und drücken Sie &quot;Ctrl+Space&quot; um die Codecompletion von Eclipse aufzurufen. Sie können dann aus einer Liste auswählen. (Beim primitiven Typ &quot;char&quot; verwenden Sie &quot;String&quot; als Objekt.)</p>
+<pre><code>byte aByte = 127;
+
+Byte aWrappedByte = 127;
+
+short aShort = 20000;
+
+Short aWrappedShort = 20000;</code></pre>
+<p>etc.</p>
+<p>...</p>
+<p>Falls Sie eine Zuordnung nicht machen können, weil Eclipse einen inkorrekten Typ annimmt, müssen Sie diesen eventuell casten:</p>
+<p><code>long aLong = (long) 123;</code></p>
+<p>Lassen Sie zudem von jedem gewrappten Typ den grössten Wert (sofern vorhanden) ausgeben. Dies erreichen Sie indem Sie die Klassenkonstante MAX_VALUE der Wrapper ausgeben:</p>
+<p>z.B. <code>System.out.println(Byte.MAX_VALUE);</code> etc.</p>
+<p>Gucken Sie sich diese Werte an und vergleichen Sie mit dem Lehrmittel. Stimmen sie überein? Welcher Datentyp kann den grössten Wert speichern?</p>
+<p>Experimentieren Sie nun mit den ganz oben definierten Variablen (z.B. &quot;aByte&quot; und &quot;aWrappedByte&quot;) herum. Geben Sie dazu weiter unten den Namen der Variablen ein, fügen am Ende einen Punkt hinzu und drücken die Codecompletion von Eclipse mit &quot;Ctrl-Space&quot;:</p>
+<p><code>aWrappedByte. - hier Codecompletion ausprobieren!</code></p>
+<p>Studieren Sie die zur Verfügung stehenden Methoden und lesen Sie die Beschreibungstexte. Klappt das auch bei der Variablen mit dem primitiven Datentyp (etwa &quot;aByte&quot;)?</p>
+<p>Notieren Sie sich für jeden Datentyp die drei, vier für Sie nützlichsten Methoden heraus und stellen Sie sie in einer Tabelle zusammen (beachten Sie insb. &quot;String&quot;). Wenn Sie sich über den Effekt einer Methode nicht sicher sind, machen Sie damit einfach eine Konsolenausgabe und studieren Sie die Ausgabe:</p>
+<p>System.out.println(aWrappedDouble.hashCode());</p>
+<p>Bei den Methoden der einzelnen Klassen können Sie Gemeinsamkeiten feststellen. Was ist die Ursache davon?</p>
+</section>
+<section id="vorgehensweise-7" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-7" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Eine Tabelle mit den Ihrer Meinung nach drei, vier wichtigsten Methoden pro Datentyp.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="8" type="1">
+<li>Datentypen</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 8-2 AS V1.1.doc</p>
+</section>
+</section>
+<section id="wie-lautet-die-ausgabe-9-1" class="level1">
+<h1>Wie lautet die Ausgabe? 9-1</h1>
+<section id="ziel-8" class="level2">
+<h2>Ziel</h2>
+<p>Ablaufkontrollstrukturen kennen.</p>
+</section>
+<section id="art-der-aufgabe-8" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Trainingsaufgabe</p>
+</section>
+<section id="ausgangslage-8" class="level2">
+<h2>Ausgangslage</h2>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="aufgabenstellung-8" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Öffnen Sie zur Vorbereitung ihre Klasse &quot;Experimente&quot; die Sie bereits früher angelegt haben.</p>
+<p>Falls Sie bei einem der folgenden Konstrukte nicht sicher sind, was die Ausgabe sein wird, geben Sie es einfach rasch ein und lassen Sie es laufen.</p>
+<p>Geben Sie bei jeder Struktur an, was auf dem Bildschirm ausgegeben wird. Die Variablen x und n sind gegeben und beide vom Typ int.</p>
+<ol type="1">
+<li><pre><code>for (n = 1; n &lt; 4; n++) 
+
+     System.out.print(n+&quot; &quot;);</code></pre></li>
+<li><pre><code>x = 2; 
+
+for (n = 2; x &lt;= 7; n = n + 1) { 
+
+     x = x + 2; 
+
+     System.out.println(x); 
+
+}</code></pre></li>
+<li><pre><code>for (n = 2; n &lt; 1; n--) 
+
+     System.out.print(n);</code></pre></li>
+<li><pre><code>for (n = 2; n &lt;= 6; n = n + 2 ) { 
+
+     x = n / 2; 
+
+     System.out.println(x); 
+
+} </code></pre></li>
+<li><pre><code>n = -2;
+
+while (n &lt;= 1)     
+
+    System.out.print(n++); </code></pre></li>
+<li><pre><code>n = 1; 
+
+while (n &lt;= 5) { 
+
+     System.out.println(n); 
+
+     n++;  
+
+} </code></pre></li>
+<li><pre><code>x = 1; 
+
+n = 1; 
+
+while (x == 1) { 
+
+     n++; 
+
+     if (n == 4) 
+
+         x = 0; 
+
+     System.out.print(n + &quot;, &quot; + x + &quot;, &quot;);
+
+}</code></pre></li>
+<li><pre><code>n=2;
+
+do 
+
+     System.out.print(n++);  
+
+while (n &lt; 5);</code></pre></li>
+<li><pre><code>n=2;
+
+do { 
+
+     n = n * n; 
+
+     System.out.println(n); 
+
+} while (n &lt; 50); </code></pre></li>
+<li><pre><code>n=2; 
+
+do{ 
+
+     System.out.println(n);    
+
+     n = n * n; 
+
+} while (n &lt; 50); </code></pre></li>
+<li><pre><code>n = 1; 
+
+do { 
+
+     n++; 
+
+     System.out.println(n); 
+
+     if (n == 4) 
+
+         break; 
+
+}while (1 == 1); </code></pre></li>
+<li><pre><code>n = 2;
+
+x = 10;  
+
+do { 
+
+     System.out.println(n); 
+
+     n++; 
+
+} while (x - n &gt;= 0); </code></pre></li>
+</ol>
+</section>
+<section id="vorgehensweise-8" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-8" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Eine Liste mit den erwarteten Ergebnissen bzw. Ausgaben der Programme.</p>
+<p><strong>Zeitbedarf:</strong> 45 Min.</p>
+<ol start="9" type="1">
+<li>Kontrollstrukturen</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 9-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="mehrere-roboter-erzeugen-9-2" class="level1">
+<h1>Mehrere Roboter erzeugen! 9-2</h1>
+<section id="ziel-9" class="level2">
+<h2>Ziel</h2>
+<p>Ablaufkontrollstrukturen kennen.</p>
+</section>
+<section id="art-der-aufgabe-9" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-9" class="level2">
+<h2>Ausgangslage</h2>
+<p>Aufgaben 3-1, 4-1 und 4-2 müssen bereits gelöst worden sein; es müssen funktionstüchtige Klassen &quot;Roboter&quot;, &quot;Steuerzentrale&quot; und &quot;Stein&quot; vorliegen. Falls das nicht der Fall sein sollte, lassen Sie sich von der Lehrperson den Lösungsquelltext der entsprechenden Aufgaben geben, sofern nicht schon geschehen.</p>
+</section>
+<section id="aufgabenstellung-9" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Nehmen Sie wieder Ihr bereits begonnenes Projekt in die Hand bzw. öffnen Sie es in Eclipse, sofern noch nicht geschehen. Sie haben nun vor sich das Projekt &quot;Experimente&quot; mit dem Paket &quot;ch.modul226.experimente&quot; und den Klassen &quot;Roboter&quot;, &quot;Steuerzentrale&quot; und &quot;Stein&quot; (und auch &quot;HalloWelt&quot; sowie &quot;Experimente&quot;, welche wir im Moment aber nicht brauchen).</p>
+<p>Sie haben hier eine rudimentäre Robotersimulation, wo ein Roboter (z.B. auf dem Mars) von der Steuerzentrale gesteuert werden kann. Dazu wird aus der Klasse &quot;Roboter&quot; ein Objekt (hier mit Namen &quot;MarsRover&quot;) instanziiert (also eine Instanz erzeugt). Diesem Objekt können dann &quot;Nachrichten&quot;/Befehle gesendet werden, indem man die Methoden des Objekts aufruft.</p>
+<p>In den folgenden paar Übungen werden Sie die Funktionalität der Steuerzentrale und des Roboters noch ein wenig erweitern.</p>
+<p>Die Roboter werden nur auf einem klar umrissenen Gebiet (z.B. einem bestimmten Krater) landen. Allerdings weiss man bei der Bodenstation bis nach der Landung nicht, wo die Kapsel genau hinuntergeht. Dies aufgrund von Turbulenzen in der dünnen Marsatmosphäre. Weiter sollen nun mehrere Roboter gleichzeitig im Einsatz stehen können. Auch konnte man bessere Aufnahmen von der Marsoberfläche machen, wobei man entdeckte, dass dort mehrere Gesteinsbrocken herumliegen. Diese sollen in der Steuerzentrale alle katalogisiert werden.</p>
+<p>Erweitern Sie die Klasse &quot;Steuerzentrale&quot; um die Klassenvariablen &quot;feldBreite&quot; und &quot;feldHoehe&quot;. Diese ganzzahligen Werte sind nicht nur konstant, sie sind auch für alle möglichen Steuerzentralen gleich, weshalb wir sie - wie bereits geschrieben - als Klassenvariablen definieren.</p>
+<p>Weisen Sie ihnen gleich den Wert 16 (Breite) und 8 (Höhe) zu. Zudem sollen sie nur für die eigene Klasse lesbar sein. Für Konstanten setzen Sie vor den Typ das Schlüsselwort &quot;final&quot;, damit es eine Klassenvariable wird setzen Sie zudem noch &quot;static&quot; davor. Sie werden später genaueres über diese Arten von Variablen erfahren. Sie dürfen natürlich auch im Lehrmittel blättern, um es jetzt herauszufinden.</p>
+<p>Die Anzahl Roboter und die der Steine wird ebenfalls in der Steuerzentrale festgelegt. Definieren Sie auch für diese ganzzahligen Werte konstante Klassenvariablen, nämlich &quot;anzahlRoboter&quot; und &quot;anzahlSteine&quot;, wobei Sie den Wert für die Anzahl der Roboter zunächst auf 2 festlegen, den für die Anzahl der Steine auf 4.</p>
+<p>Um die Roboter (und Steine) zu &quot;verwalten&quot; oder - rudimentär gesagt - im Gedächtnis zu behalten, benötigt die Steuerzentrale eine Datenstruktur, worin die Roboter und Steine abgelegt werden. Dazu verwenden Sie zwei Arrays mit den Namen &quot;roboterListe&quot; und &quot;steinListe&quot; die Sie ebenfalls als Klassenvariablen definieren. Die Roboterliste ist dabei ein Array mit Elementen des Typs &quot;Roboter&quot;, die Steinliste ein Array mit Elementen des Typs &quot;Stein&quot;. Falls Sie nicht mehr wissen, wie Arrays in Java definiert werden, schauen Sie im Lehrmittel nach und adaptieren ein Bespiel von dort.</p>
+<p>Gehen Sie nun in die main Methode (Klasse &quot;Steuerzentrale&quot;). Dort haben Sie folgende zwei Zeilen die je einen Roboter und einen Stein instanziieren:</p>
+<pre><code>Roboter MarsRover = new Roboter();
+
+Stein gestein = new Stein();</code></pre>
+<p>Schreiben Sie davor je eine Anweisung, um die weiter oben definierten Arrays (&quot;roboterListe&quot; und &quot;steinListe&quot;) zu instaziieren. Die Anzahl der Felder sind bereits in den Klassenkonstanten &quot;anzahlRoboter&quot; und &quot;anzahlSteine&quot; festgelegt. Verwenden Sie diese.</p>
+<p>Um nun mehrere Roboter und Steine einsetzen zu können, tun Sie folgendes:</p>
+<p>Ersetzen Sie jede dieser obenstehenden Anweisungen durch je eine for-Schleife mit folgenden Eigenschaften:</p>
+<p>Sie soll genau sovielmal ausgeführt werden, wie in den Variablen &quot;anzahlRoboter&quot; (bzw. &quot;anzahlSteine&quot;) definiert ist.</p>
+<p>In jeder Ausführung soll ein neues Objekt erzeugt (instanziiert) werden, welches gleich im entsprechenden Arrayfeld abgelegt werden soll. Direkt nach der Erzeugung des Objekt verwenden Sie je die Methode &quot;setPosition&quot; um die Position festzulegen. Die Roboter setzen Sie alle auf Feld 3/3, die Steine setzen Sie alle auf Feld 7/7.</p>
+<p>Beispiel: Im ersten Durchlauf (Indexnummer 0) der Roboterschlaufe erzeugen Sie im Feld &quot;roboterListe[0]&quot; ein neues Objekt vom Typ Roboter, im zweiten Durchlauf (Indexnummer 1) dasselbe im Feld &quot;roboterListe[1]&quot; und so weiter. Wenn Sie nicht wissen wie das geht, konsultieren Sie das Lehrmittel, z.B. das Kapitel &quot;Auch in Java gibt es Arrays&quot;.</p>
+<p>Die weiter unten folgenden Bewegungsanweisungen für den Roboter, die Sie in einer der letzten Übungen erstellt haben, können Sie auskommentieren oder löschen.</p>
+<p>Fügen Sie anstelle folgenden Code ein, mit dem Sie prüfen können, ob die Objekte wie gewünscht in die Arrays geschrieben wurden:</p>
+<pre><code>System.out.println(&quot;Anzahl Objekte in der Roboterliste: &quot; + roboterListe.length);
+
+System.out.println(&quot;Anzahl Objekte in der Steinliste: &quot; + steinListe.length);</code></pre>
+<p>Führen Sie nun den Code aus. In der Konsole soll - wie erwartet - erscheinen:</p>
+<pre><code>Anzahl Objekte in der Roboterliste: 2
+
+Anzahl Objekte in der Steinliste: 4</code></pre>
+<p>Variieren Sie die Werte der Klassenvariablen &quot;anzahlRoboter&quot; und &quot;anzahlSteine&quot; und schauen Sie, ob sich auch die Ausgabe verändert.</p>
+</section>
+<section id="vorgehensweise-9" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-9" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Ein Programm mit den in der Aufgabenstellung erwähnten Eigenschaften sowie folgende Konsolenausgabe:</p>
+<pre><code>Anzahl Objekte in der Roboterliste: 2
+
+Anzahl Objekte in der Steinliste: 4</code></pre>
+<p><strong>Zeitbedarf:</strong> 60 Min.</p>
+<ol start="9" type="1">
+<li>Kontrollstrukturen</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 9-2 AS V1.1.doc</p>
+</section>
+</section>
+<section id="roboter-landen-zufällig-10-1" class="level1">
+<h1>Roboter landen zufällig 10-1</h1>
+<section id="ziel-10" class="level2">
+<h2>Ziel</h2>
+<p>Strukturierung kennen</p>
+</section>
+<section id="art-der-aufgabe-10" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-10" class="level2">
+<h2>Ausgangslage</h2>
+<p>Aufgaben 3-1, 4-1, 4-2 und 9-2 müssen bereits gelöst worden sein; es müssen funktionstüchtige Klassen &quot;Roboter&quot;, &quot;Steuerzentrale&quot; und &quot;Stein&quot; vorliegen. Falls das nicht der Fall sein sollte, lassen Sie sich von der Lehrperson den Lösungsquelltext der entsprechenden Aufgaben geben, sofern nicht schon geschehen.</p>
+</section>
+<section id="aufgabenstellung-10" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Nun werden zwar schön die Roboter erzeugt und in den Array gefüllt, ihre Positionierung entspricht aber noch nicht der Realität. Dort landen die Roboter nämlich zufällig in dem bestimmten Krater. Ebenso (nehmen wir als Vereinfachung an) sind auch die Steine zufällig über die Landschaft verteilt.</p>
+<p>Verwenden Sie zur Bestimmung der Position der einzelnen Objekte (&quot;setPosition&quot;) also Zufallszahlen im Bereich der Feldgrösse!</p>
+<p>Verwenden Sie dazu die Klasse &quot;Random&quot; aus dem Paket &quot;java.math.Random&quot;. Erzeugen Sie vor den for-Schleifen ein neues Objekt &quot;zufallsZahl&quot; vom Typ &quot;Random&quot;. Sie können in den Schleifen mit der Methode &quot;nextInt(n)&quot; nun eine ganzzahlige Zufallszahl aus dem Bereich [0,n-1] abrufen. zufallsZahl.nextInt(5) liefert also eine Zahl grösser gleich 0 und kleiner gleich 4. Verwenden Sie diese Methode, um die Position aller Elemente innerhalb des zulässigen Feldes (vgl. &quot;feldBreite&quot; und &quot;feldHoehe&quot;) zufällig zu bestimmen.</p>
+<p>Beachten Sie dabei, dass die Adressierung bei 0 beginnt. Ist das zulässige Feld 20 Einheiten breit, sind die zu beachtenden Felder also von 0 bis 19.</p>
+</section>
+<section id="vorgehensweise-10" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-10" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Klasse &quot;Steuerzentrale&quot; um zufällige Positionswahl erweitert.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="10" type="1">
+<li>Funktionen und Methoden</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 10-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="positionen-der-roboter-darstellen-10-2" class="level1">
+<h1>Positionen der Roboter darstellen! 10-2</h1>
+<section id="ziel-11" class="level2">
+<h2>Ziel</h2>
+<p>Strukturierung kennen</p>
+</section>
+<section id="art-der-aufgabe-11" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-11" class="level2">
+<h2>Ausgangslage</h2>
+<p>Aufgaben 3-1, 4-1, 4-2, 9-2 und 10-1 müssen bereits gelöst worden sein; es müssen funktionstüchtige Klassen &quot;Roboter&quot;, &quot;Steuerzentrale&quot; und &quot;Stein&quot; vorliegen. Falls das nicht der Fall sein sollte, lassen Sie sich von der Lehrperson den Lösungsquelltext der entsprechenden Aufgaben geben, sofern nicht schon geschehen.</p>
+</section>
+<section id="aufgabenstellung-11" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>In der Steuerzentrale möchte man nun auch noch eine graphische Auswertung der momentanen Position der Roboter haben. Obwohl die ESA-Wissenschaftler keine Probleme haben, Roboterpositionsdaten wie (2/4) auszuwerten und sich rein gedanklich vorzustellen, braucht man doch ein wenig &quot;eyecandy&quot; falls sich hohe Regierungsvertreter die aktuelle Situation anschauen möchten, da Politiker bekanntlicherweise nur mit Phantasie ausgestattet sind, wenn es um Wahlversprechen geht. Da die Steuerzentrale lediglich ein paar Zeichendrucker entbehren kann, genügt es, die Darstellung in der Konsole auszugeben. Erweitern Sie die Simulation also um eine zeichenbasierte Karte des aktuellen Feldes.</p>
+<p>Ergänzen Sie zunächst die Klasse Roboter um eine Richtungsinformation. Dies damit man auf der Übersichtskarte dann zeigen kann, in welche Richtung ein Roboter &quot;schaut&quot; bzw. zuletzt gefahren ist. Führen Sie dazu eine neue private Instanzenvariable &quot;richtung&quot; vom Typ String ein. Diese soll, je nachdem in welche Richtung der Roboter zuletzt gefahren ist, die Himmelsrichtung beinhalten: &quot;N&quot; für Norden, &quot;E&quot; für East, &quot;S&quot; für Süden, &quot;W&quot; für Westen.</p>
+<p>Erstellen Sie eine neue private Methode &quot;setDirection&quot;, die einen Parameter vom Typ String erwartet und die Variable &quot;richtung&quot; entsprechend setzt. Erweitern Sie nun jede der vier Bewegungsmethoden (z.B. &quot;moveUp&quot;) um den Aufruf der neuen Methode, welche die Richtungsvariable auf die aktuelle Richtung setzt. Nach dem Aufruf der Methode &quot;moveRight&quot; soll der Inhalt der Variable &quot;richtung&quot; also sein: &quot;E&quot;. Zudem erstellen Sie auch einen Getter für die Richtung, also &quot;getDirection&quot; mit String als Rückgabewert.</p>
+<p>Fügen Sie im Konstruktor die Anweisung hinzu, dass der Roboter nach Erstellung (sprich Landung) gleich nach Norden zeigt.</p>
+<p>Erstellen Sie im Paket &quot;ch.modul226.experimente&quot; (also dort wo schon die anderen Klassen liegen) nun eine neue Klasse &quot;Ausgabe&quot; mit folgender Signatur (vgl. Klassendiagramme):</p>
+<hr />
+<p>Class Ausgabe</p>
+<pre><code>
+- sizeX: Integer
+
+- sizeY: Integer
+
+- steinIcon: String
+
+- roboterIconUp: String
+
+- roboterIconDown: String
+
+- roboterIconLeft: String
+
+- roboterIconRight: String
+
+- leerIcon: String
+
+- randIcon: String
+
+- feld: String[][]
+
+
++ display(): void
+
++ setSize(breite: Integer, hoehe: Integer): void
+
++ addObject(posX: Integer, posY: Integer, richtung: String): void
+
++ addObject(posX: Integer, posY: Integer): void
+</code></pre>
+<p>Die Variablen &quot;sizeX&quot; und &quot;sizeY&quot; stehen für die Breite und Höhe des Feldes.</p>
+<p>&quot;setSize&quot; nimmt als Parameter eine Breite und eine Höhe und weist die Werte den beiden Variablen &quot;sizeX&quot; und &quot;sizeY&quot; zu.</p>
+<p>Die verschiedenen &quot;Icon&quot; Variablen sind alles die Zeichen, die auf der Landkarte für das jeweilige Element zu setzen sind. Wir behandeln sie im Moment noch als Konstanten, weisen Sie folgende Werte zu und kennzeichnen Sie sie entsprechend:</p>
+<pre><code>steinIcon = &quot;o&quot;
+
+roboterIconUp = &quot;^&quot;
+
+roboterIconDown = &quot;V&quot;
+
+roboterIconLeft = &quot;&lt;&quot;
+
+roboterIconRight = &quot;&gt;&quot;
+
+leerIcon = &quot;_&quot;
+
+randIcon = &quot;#&quot;</code></pre>
+<p>(Die Symbole für die einzelnen Richtungen sollen Richtungspfeile symbolisieren. Für den &quot;Nach-oben&quot; Pfeil hat es leider nichts Besseres als den Zirkumflex.)</p>
+<p>&quot;addObject&quot; ist eine überladene Methode und hat als Parameter die x- und y-Position eines Objekts sowie in der überladenen Version die Richtung. Sie setzt im mehrdimensionalen Array &quot;feld&quot; je nach dem, ob die Richtung gesetzt wurde oder nicht ein entsprechendes Icon.</p>
+<p>Wird eine Richtung mitgeliefert, wird ein Roboter im feld gesetzt. Ist die übergebene Richtung beispielsweise &quot;N&quot; (also Nord, Sie erinnern sich?), soll ein &quot;roboterIconUp&quot; eingefügt werden.</p>
+<p>Wird keine Richtung mitgeliefert, wird ein Stein im Feld gesetzt.</p>
+<p>Der Konstruktor soll zwei ganzzahlige Argumente &quot;breite&quot; und &quot;hoehe&quot; erwarten. Er ruft seinerseits die Methode &quot;setSize&quot; auf und instanziiert den mehrdimensionalen Array feld. Zudem initialisiert er auch gleich den mehrdimensionalen Array feld auf die entsprechende Feldgrösse.</p>
+<p>Die Methode &quot;display&quot; soll nun den Inhalt des mehrdimensionalen Arrays &quot;feld&quot; auf die Konsole schreiben. Sie verwenden dazu zwei in sich verschachtelte for-Schleifen, die jedes Element des Arrays abfahren. Die äussere Schleife soll die Zeilen zählen (Höhe des Feldes) und die innere Schleife die Zeichen (Breite des Feldes). Geben Sie jedes Zeichen direkt an der Konsole aus. Verwenden Sie dazu jeweils:</p>
+<p><code>System.out.print(&quot;...&quot;)</code></p>
+<p>wobei sie das entsprechende Zeichen (oder ein Unterstrich, falls sich nichts auf dem Feld befindet) als Parameter mitgeben. Um einen Zeilensprung zu machen, geben Sie einfach &quot;&quot; aus. Alternativ können Sie auch ein leeres System.out.println() verwenden, um einen Zeilensprung zu realisieren.</p>
+<p>Um bei Feldern ohne Inhalt zu verhindern, dass einfach &quot;null&quot; geschrieben wird, machen Sie eine Verzweigung die abklärt, ob im aktuellen Feld überhaupt etwas drinsteht:</p>
+<pre><code>if(feld[j][i] instanceof String) { 
+
+  // Schreibe das entsprechende Element in die Konsole
+
+} else {
+
+  // Schreibe einfach einen Unterstrich in die Konsole
+
+}</code></pre>
+<p>Programmieren Sie nun die oben beschriebene Funktionalität in der Klasse &quot;Anzeige&quot; aus.</p>
+<p>Erweitern Sie nun die Klasse &quot;Steuerzentrale&quot; so, dass ganz am Ende der main Methode sowohl für die Roboterliste als auch für die Steinliste eine Schleife gemacht wird, welche jedes Element der jeweilgen Arrays mittels der Methode &quot;addObject&quot; zum Ausgabeobjekt hinzufügt. Dazu muss das Ausgabeobjekt natürlich zuerst instanziiert werden; tun sie das mittels einer Variable &quot;ausgabe&quot; vom Typ &quot;Ausgabe&quot;. Beachten Sie, dass Sie beim Aufruf nun Parameter mitgeben müssen. Rufen Sie nach den Schleifen die Methode &quot;display&quot; auf. Auf der Konsole sollte nun eine Darstellung der Elemente im Feld erscheinen.</p>
+<p>Führen Sie das Programm ein paar Mal aus um zu schauen, ob die Positionen der Elemente (Steine und Roboter) sich tatsächlich zufällig verändern. Die Roboter zeigen im Moment noch stets nach oben, wie Sie es im Konstruktor der Roboter festgelegt haben.</p>
+<p>Als Zusatzaufgabe können Sie versuchen, um das ganze Feld einen Rand aus &quot;randIcon&quot; zu erstellen.</p>
+</section>
+<section id="vorgehensweise-11" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-11" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Die im Aufgabentext beschriebenen Änderungen sollen implementiert worden sein. In der Konsole soll eine vergleichbare Ausgabe erscheinen:</p>
+<p>Anzahl Objekte in der Roboterliste: 2</p>
+<p>Anzahl Objekte in der Steinliste: 4</p>
+<pre><code>________________
+
+________________
+
+o____________o__
+
+________________
+
+__^_____________
+
+_______o__^_____
+
+________________
+
+___o____________
+</code></pre>
+<p>In diesem Feld sind nun zufällig vier Steine und zwei Roboter platziert, wobei die Roboter erwartungsgemäss nach Norden blicken (Sie haben ihnen ja noch keine anderslautenden Anweisungen gegeben).</p>
+<p><strong>Zeitbedarf:</strong> 120 Min.</p>
+<ol start="10" type="1">
+<li>Funktionen und Methoden</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 10-2 AS V1.1.doc Seite PAGE 4 von NUMPAGE</p>
+</section>
+</section>
+<section id="real-life---objekte-11-1" class="level1">
+<h1>Real Life -&gt; Objekte 11-1</h1>
+<section id="ziel-12" class="level2">
+<h2>Ziel</h2>
+<p>Gefühl für Objekte entwickeln</p>
+</section>
+<section id="art-der-aufgabe-12" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-12" class="level2">
+<h2>Ausgangslage</h2>
+<p>Bereits mit Objekten Kontakt gehabt.</p>
+</section>
+<section id="aufgabenstellung-12" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Inzwischen haben Sie einen Einblick erhalten, wie Objekte beschaffen sind. Mit dieser Aufgabe vertiefen Sie diese Kenntnis. Wie Sie im Kapitel &quot;Was ist objektorientierte Programmierung&quot; erfahren haben, ist die objektorientierte Programmierung die Lösung für eine Reihe von bekannten Problemen im Softwareengineering. Das Kernstück dabei ist, die Software jeweils die Realität abzubilden, wobei jeder Gegenstand in der Realität in ein Code-Objekt abgebildet wird.</p>
+<p>Objekte haben dabei eine Sicht von aussen, die alle &quot;Klienten&quot; des Objekts sehen. Dies ist das sogenannte Interface. Sie besitzen aber auch ein ganz spezielles Innenleben, welches die korrekte Funktion des Interfaces gewährleistet. Dieses Innenleben, Implementierung genannt, ist für die Klienten nicht sichtbar, sie sehen nur das Interface, weshalb es (aus der Sicht der Klienten) keine Rolle spielt, wie die Objekte im Innern funktionieren. Zum Innenleben gehören auch bestimmte feste Eigenschaften, die zu einem Objekt gehören.</p>
+<p>Nehmen Sie sich als Beispiel eine Uhr. Will man eine Uhr als Objekt modellieren, kommt man auf folgende Werte:</p>
+<section id="eigenschaften" class="level3">
+<h3>Eigenschaften</h3>
+<p>Die Uhr hat im Prinzip nur die aktuelle Zeit als Eigenschaft (&quot;aktuelleZeit&quot;).</p>
+<p>(Komplexere Modelle könnten auch als Eigenschaft speichern, ob gerade Sommerzeit ist und in welcher Zeitzone man sich befindet.)</p>
+</section>
+<section id="interface" class="level3">
+<h3>Interface</h3>
+<p>In Java Pseudocode ausgedrückt wäre das Interface wohl etwas wie &quot;gibZeit()&quot;. Etwas genauer gibt es momentan zwei übliche Interfaces, nämlich &quot;gibAnalogZeit()&quot; und &quot;gibDigitalZeit()&quot;. Beide &quot;zeigen&quot; lediglich die Eigenschaft in einer für den Klienten üblichen Weise an. Die analoge Variante ist für ein Zifferblatt (vgl. Bild im Lehrmittel Kap. 11.5), die digitale Variante ist quasi ein String der aktuellen Zeit: &quot;12:15:12&quot;.</p>
+<p>Zudem haben Uhren auch eine Methode &quot;stelleZeitAuf(Zeit eineZeit)&quot; womit man die Eigenschaft der Uhr verändern kann.</p>
+</section>
+<section id="implementierung" class="level3">
+<h3>Implementierung</h3>
+<p>Die Implementierung beschreibt, wie die Informationen oder Handlungen des Interfaces bearbeitet werden. Bei einer analogen Uhr ist die Eigenschaft &quot;aktuelleZeit&quot; die Stellung der Zahnräder. Bei einer digitalen Uhr wäre es ein energetischer Zustand in einem Mikrochip. Für den Klienten, der mit &quot;gibZeit()&quot; die Zeit wissen möchte, spielt das aber keine Rolle, er kriegt als Rückgabewert einfach die aktuelle Zeit zurück. Bei der analogen Uhr wird &quot;gibZeit()&quot; so realisiert, dass mit einer kleinen Stange die Zahnradposition zu zwei Zeigern auf dem Zifferblatt geleitet wird.</p>
+<p>Die Methode &quot;stelleZeitAuf(...)&quot; ist bei der analogen Uhr so realisiert, dass man mit einem Drehkranz die Stellung der Zahnräder beinflussen kann.</p>
+<p>Stellen Sie nun für folgende Geräte aus dem Alltag ebenfalls jeweils eine Liste zusammen, was ihre jeweilgen wichtigesten Eigenschaften, das Interface und die Implementierung des Interfaces sind:</p>
+<p>-CD-Spieler</p>
+<p>-Toaster</p>
+<p>-Staubsauger</p>
+<p>-Walkman/Portabler Mp3 Player</p>
+<p>-Schreibtischlampe</p>
+</section>
+</section>
+<section id="vorgehensweise-12" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-12" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Von den vorgestellen Gegenständen je eine Objektsbeschreibung mit drei, vier wichtigen Eigenschaften und Methoden, wobei Sie dort sowohl das &quot;Interface&quot; als auch die &quot;Implementierung&quot; beschreiben.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+</section>
+</section>
+<section id="positionsobjekt-erstellen-13-1" class="level1">
+<h1>Positionsobjekt erstellen 13-1</h1>
+<section id="ziel-13" class="level2">
+<h2>Ziel</h2>
+<p>Wissen, was Klassen und Objekte sind</p>
+</section>
+<section id="art-der-aufgabe-13" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-13" class="level2">
+<h2>Ausgangslage</h2>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="aufgabenstellung-13" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>In der objektorientierten Programmierung ist bekanntlich alles ein Objekt. In der Robotersimulation haben Sie bis jetzt die Position der Roboter mittels zwei Instanzvariablen positionX und positionY realisiert. Sie werden diese Position nun mittels einem Objekt repräsentieren.</p>
+<p>Erstellen Sie im Projekt &quot;Experimente&quot; im &quot;src&quot;-Folder ein neues Paket &quot;ch.modul226.position&quot; und darin eine neue Klasse &quot;Position&quot;. Öffnen Sie diese Klasse auch gleich zur Bearbeitung. Erstellen Sie nun die Klasse &quot;Position&quot; mit folgender Signatur:</p>
+<hr />
+<p>Class Position</p>
+<hr />
+<ul>
+<li><p>posX: Number</p></li>
+<li><p>posY: Number</p></li>
+</ul>
+<hr />
+<ul>
+<li><p>Position()</p></li>
+<li><p>Position(x: Number)</p></li>
+<li><p>Position(x: Number, y: Number)</p></li>
+<li><p>setX(x: Number): void</p></li>
+<li><p>setY(y: Number): void</p></li>
+<li><p>getX(): Number</p></li>
+<li><p>getY(): Number</p></li>
+<li><p>setPos(x: Number): void</p></li>
+<li><p>setPos(x: Number, y: Number): void</p></li>
+<li><p>absoluteDistance(): Double</p></li>
+<li><p>distanceTo(p: Position): Double</p></li>
+</ul>
+<hr />
+<p>Die Klasse hat zwei Instanzvariablen &quot;posX&quot; und &quot;posY&quot; vom Typ &quot;Number&quot;. &quot;Number&quot; ist dabei die Superklasse aller numerischen Werte wie z.B. Integer, Double etc. Wir sparen uns damit, den Konstruktor zu überladen um sowohl Double als auch Integerzahlen zuzulassen. Weil all diese Klassen Abkömmlinge von &quot;Number&quot; sind, sind sie damit &quot;kompatibel&quot;. Mehr dazu erfahren Sie beim Thema &quot;Polymorphismus&quot;. Sie dürfen natürlich auch kurz im Lehrmittel nachschauen, wenn Sie neugierig sind!</p>
+<p>Den Konstruktor überladen Sie so, dass Null, einer oder zwei Parameter zugelassen sind. Die jeweils fehlenden Koordinaten setzen Sie dabei einfach auf 0.</p>
+<p>Mit den &quot;Settern&quot; &quot;setX&quot; und &quot;setY&quot; setzen Sie einfach die Positionswerte neu. Mit den &quot;Gettern&quot; (&quot;getX&quot; etc.) können diese abgerufen werden. Die Methoden &quot;setPos&quot; setzen einfach soviele Koordinaten wie angegeben, die anderen lassen sie unangetastet.</p>
+<p>Die Methode &quot;absoluteDistance&quot; berechnet - wie der Name sagt - den Abstand zum Ursprung (0/0). Der Rückgabewert ist stets ein Double.</p>
+<p>Die Methode &quot;distanceTo&quot; verlangt ein Objekt des selben Typs (&quot;Position&quot;) und berechnet die Entfernung zum aktuellen Objekt.</p>
+<p>Für diese beiden Berechnungen benötigen Sie die Quadratwurzel und den Exponenten. Diese beiden Funktionen sind Methoden des Math Packages, rufen Sie sie so auf:</p>
+<pre><code>Math.pow(Basis, Exponent)
+
+Math.sqrt(x)</code></pre>
+<p>Wenn Sie die Klasse implementiert haben, probieren Sie sie in der Klasse &quot;Experimente&quot; aus: Binden Sie zunächst das entsprechende Paket ein und geben dann in &quot;Experimente&quot; folgenden Code ein:</p>
+<pre><code>Position pos1 = new Position(35,12.5);
+
+Position pos2 = new Position();
+
+pos1.setY(38);
+
+pos2.setPos(12,14);
+
+System.out.println(pos1.absoluteDistance());
+
+System.out.println(pos2.absoluteDistance());
+
+System.out.println(pos1.distanceTo(pos2));
+
+System.out.println(pos2.distanceTo(pos1));
+
+System.out.println(pos1.distanceTo(pos1));
+
+System.out.println(pos2.distanceTo(pos2));</code></pre>
+</section>
+<section id="vorgehensweise-13" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-13" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>In der Konsole sollte erscheinen:</p>
+<pre><code>51.66236541235796
+18.439088914585774
+33.24154027718932
+33.24154027718932
+0.0
+0.0</code></pre>
+<p>(Die beiden mittleren und die beiden letzten Werte sind wie erwartet gleich.)</p>
+<p><strong>Zeitbedarf:</strong> 90 Min.</p>
+<ol start="13" type="1">
+<li>Datenkapselung</li>
+</ol>
+</section>
+</section>
+<section id="roboter-um-positionsobjekt-erweitern-13-2" class="level1">
+<h1>Roboter um Positionsobjekt erweitern 13-2</h1>
+<section id="ziel-14" class="level2">
+<h2>Ziel</h2>
+<p>Wissen, was Klassen und Objekte sind</p>
+</section>
+<section id="art-der-aufgabe-14" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-14" class="level2">
+<h2>Ausgangslage</h2>
+<p>Klassen &quot;Roboter&quot;, &quot;Stein&quot;, &quot;Ausgabe&quot; und &quot;Steuerzentrale&quot; von den vorherigen Aufgaben vorliegend.</p>
+</section>
+<section id="aufgabenstellung-14" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Benutzen Sie nun die neugeschriebene Positionsklasse um die Position des Roboters und des Steins zu repräsentieren. Bauen Sie also die Klassen &quot;Roboter&quot; und &quot;Stein&quot; so um, dass anstelle der beiden Positionsvariablen &quot;positionX&quot; und &quot;positionY&quot; (welche Sie löschen) neu nur noch die &quot;pos&quot; vom Typ &quot;Position&quot; als Positionsinformation vorliegt. Passen Sie dabei alle Methoden an, die noch auf die alten Variablen verweisen, an die neue Begebenheit an.</p>
+<p>Vergessen Sie nicht, ein Positionsobjekt im Konstruktor der Klassen &quot;Roboter&quot; und &quot;Stein&quot; zu instanziieren.</p>
+</section>
+<section id="vorgehensweise-14" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-14" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Die Klasse &quot;Steuerzentrale&quot; soll nicht verändert werden und muss fehlerlos ausgeführt werden. Sie gibt wieder den selben Output wie bei der früheren Aufgabe, wo Sie die Ausgabeklasse erstellt hatten.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<p><strong>Referenz:</strong> 226-Uebung 13-2 AS V1.1.doc</p>
+</section>
+</section>
+<section id="positionsobjekt-auf-3d-erweitern-13-3" class="level1">
+<h1>Positionsobjekt auf 3D erweitern 13-3</h1>
+<section id="ziel-15" class="level2">
+<h2>Ziel</h2>
+<p>Wissen, was Klassen und Objekte sind</p>
+</section>
+<section id="art-der-aufgabe-15" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-15" class="level2">
+<h2>Ausgangslage</h2>
+<p>Eine bestehende Klasse &quot;Position&quot; aus der vorhergehenden Übung.</p>
+</section>
+<section id="aufgabenstellung-15" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Sie haben nun eine funktionierende Positionsklasse, die Sie auch in den Klassen &quot;Roboter&quot; und &quot;Stein&quot; integriert haben. Um zu erfahren, wie mächtig das objektorientierte Konzept ist, erweitern Sie die Klasse &quot;Position&quot; nun so, dass man auch dreidimensionale Punkte speichern kann (Name der dritten Dimension: Z).</p>
+<p>Erweitern Sie die Klasse um die notwendigen Eigenschaften und Methoden, so dass man nebst ein- und zweidimensionalen Punkten nun auch dreidimensionale Punkte speichern kann.</p>
+<p>Aber Achtung: An den bereits bestehenden Methodensignaturen dürfen Sie nichts ändern!</p>
+<p>Was Sie hingegen ändern dürfen (und auch müssen) sind die Körper, also das Innenleben der Methoden. So müssen Sie z.B. sicher die &quot;distanceTo&quot; Methode anpassen, weil im Moment nur zwei Dimensionen berücksichtigt sind. Führen Sie die Änderungen aber so aus, dass die Methoden sich bei allen bisherigen Operationen noch genau gleich verhalten. Zudem dürfen Sie natürlich neue Methoden hinzufügen.</p>
+<p>Testen Sie die angepasste Positionsklasse mit den selben Anweisungen wie zwei Aufgaben vorher:</p>
+<pre><code>Position pos1 = new Position(35,12.5);
+
+Position pos2 = new Position();
+
+pos1.setY(38);
+
+pos2.setPos(12,14);
+
+System.out.println(pos1.absoluteDistance());
+
+System.out.println(pos2.absoluteDistance());
+
+System.out.println(pos1.distanceTo(pos2));
+
+System.out.println(pos2.distanceTo(pos1));
+
+System.out.println(pos1.distanceTo(pos1));
+
+System.out.println(pos2.distanceTo(pos2));</code></pre>
+<p>Und zudem mit folgenden neuen Anweisungen:</p>
+<pre><code>pos1.setZ(26);
+
+System.out.println(pos1.absoluteDistance());
+
+System.out.println(pos1.distanceTo(pos2));</code></pre>
+</section>
+<section id="vorgehensweise-15" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-15" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Das Programm &quot;Steuerzentrale&quot; soll fehlerfrei ablaufen und das Programm &quot;Experimente&quot; soll nun folgende Bildschirmausgabe liefern:</p>
+<pre><code>51.66236541235796
+18.439088914585774
+33.24154027718932
+33.24154027718932
+0.0
+0.0
+57.83597496368502
+42.20189569201838</code></pre>
+<p><strong>Zeitbedarf:</strong> 30 Minuten</p>
+<ol start="13" type="1">
+<li>Datenkapselung <strong>Referenz:</strong> 226-Uebung 13-3 AS V1.1.doc</li>
+</ol>
+</section>
+</section>
+<section id="pakete-in-java-14-1" class="level1">
+<h1>Pakete in Java 14-1</h1>
+<section id="ziel-16" class="level2">
+<h2>Ziel</h2>
+<p>Pakete zur Ordnung verwenden</p>
+</section>
+<section id="art-der-aufgabe-16" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-16" class="level2">
+<h2>Ausgangslage</h2>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="aufgabenstellung-16" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Lernen Sie in dieser Aufgabe einige nützliche Pakete kennen. Zur Vorbereitung erstellen Sie ein neues Programm, wo Sie Dinge ausprobieren können. Sie können dazu z.B. die Klasse &quot;Experimente&quot; aus dem Projekt &quot;Experimente&quot; verwenden. Vergessen Sie nicht, die jeweiligen Pakete einzubinden. Sie finden sie im Lehrmittel.</p>
+<ol type="1">
+<li><p>Grosse Zahlen</p>
+<p>Betrachten Sie folgenden Code:</p>
+<pre><code>BigInteger eineGrosseZahl = new BigInteger(&quot;10000000000000000000&quot;);
+
+BigInteger andereGrosseZahl = new BigInteger(&quot;111111111&quot;);
+
+BigInteger dritteGrosseZahl = eineGrosseZahl.add(andereGrosseZahl);
+
+System.out.println(dritteGrosseZahl.toString());</code></pre>
+<p>Die Ausgabe an der Konsole lautet:</p>
+<p><code>10000000000111111111</code></p>
+<p>Zur Darstellung grosser Zahlen (grösser als die nativen Datentypen erlauben) verwendet man etwa die Klasse &quot;BigIntegers&quot;. Mit dieser können solche Zahlen verwaltet und dargestellt werden. Benutzen Sie nun die Klasse &quot;BigIntegers&quot; für folgende Aufgaben:</p>
+<ul>
+<li><p>Multiplizieren Sie 1 * 10^300 (eine eins und 300 Nullen) mit einer Milliarde (1'000'000'000).</p>
+<p>(Probieren Sie dasselbe mit dem Taschenrechner ihres Computers. Copy/Paste hilft Ihnen, nicht jede Null einzeln eingeben zu müssen!)</p></li>
+<li><p>Suchen Sie den GGT folgender beider Zahlen:</p></li>
+</ul>
+<p>12345678912 und 121212121212121218</p>
+<p>(Bevor Sie den euklidschen Algorithmus implementieren; Die Klasse BigInteger hat eine Methode dazu!)</p></li>
+<li><p>Dateien lesen</p>
+<p>Betrachten Sie folgenden Code:</p>
+<pre><code>try {
+
+    FileReader file = new FileReader(&quot;/home/user/text.txt&quot;);
+
+}
+
+catch(IOException ex) {
+
+    System.out.println(&quot;Die Datei wurde nicht gefunden!&quot;);
+
+}</code></pre>
+<p>Erstellen Sie auf einem Laufwerk eine Datei &quot;test.txt&quot; und schreiben Sie irgendwelchen Text hinein. Der obige Code öffnet die angegebene Datei. Übernehmen Sie ihn in Eclipse und passen Sie den Pfad so an, dass er auf Ihre neu erstellte Textdatei zeigt.</p>
+<p>Wenn Sie den Code ausführen, sollte auf der Konsole keine Meldung erscheinen. Dies ist das Zeichen, dass die Datei erfolgreich geladen wurde.</p>
+<p>Erweitern Sie den Code so, dass der Inhalt der Textdatei auf der Konsole ausgegeben wird.</p>
+<p>Hinweis: Das Objekt &quot;file&quot; beinhaltet die gespeicherte Datei. Mit der Methode &quot;read()&quot; können Sie z.B. das nächste Byte der Datei auslesen. Wenn das Ende der Datei erreicht ist, gibt &quot;read()&quot; als Rückgabewert -1 zurück.</p></li>
+<li><p>Datumsobjekte</p>
+<p>Betrachten Sie folgenden Code:</p>
+<pre><code>// Der Kalender repräsentiert ein Zeitmodell
+
+GregorianCalendar kalender = new GregorianCalendar();
+
+// Die Klasse Date hingegen einen einzelnen Zeitpunkt
+
+Date datum = kalender.getTime();
+
+// Für die Ausgabe gibt es die Klasse SimpleDateFormat
+
+SimpleDateFormat datumsformat = new SimpleDateFormat();
+
+System.out.println(datumsformat.format(datum));</code></pre>
+<p>Dieser gibt das aktuelle Datum an der Konsole aus. Passen Sie ihn so an, damit er einen spezifischen Zeitpunkt anzeigt, nämlich den 1. April 2008, 19:45:00.</p>
+<p>Hinweis: Sie suchen nach einer Methode &quot;set&quot;.</p></li>
+</ol>
+</section>
+<section id="vorgehensweise-16" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-16" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Aufträge gemäss Aufgabenstellung bearbeitet.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="14" type="1">
+<li>Pakete in Java</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 14-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="online-dokumentation-15-1" class="level1">
+<h1>Online Dokumentation 15-1</h1>
+<section id="ziel-17" class="level2">
+<h2>Ziel</h2>
+<p>Java Dokumentation verstehen</p>
+</section>
+<section id="art-der-aufgabe-17" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-17" class="level2">
+<h2>Ausgangslage</h2>
+<p>Vorherige Aufgabe &quot;Pakete&quot; gelöst.</p>
+</section>
+<section id="aufgabenstellung-17" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Sie haben in der vorherigen Aufgabe einige Pakete eingebunden und mit den Bibliotheken von Java gearbeitet. Vertiefen Sie in dieser Aufgabe Ihre Kenntnisse durch das Betrachten der Online Dokumentation; die Java API:</p>
+<ul>
+<li>für Version 7: <a href="http://docs.oracle.com/javase/7/docs/api/" class="uri">http://docs.oracle.com/javase/7/docs/api/</a></li>
+<li>für Version 8: <a href="http://docs.oracle.com/javase/8/docs/api/" class="uri">http://docs.oracle.com/javase/8/docs/api/</a></li>
+</ul>
+<p>Öffnen Sie einen Webbrowser und laden Sie die passende Seite.</p>
+<section id="aufgabe-1-grosse-fliesskommazahlen" class="level3">
+<h3>Aufgabe 1: Grosse Fliesskommazahlen</h3>
+<p>Klicken Sie oben links das Paket &quot;java.math&quot; an. Sie haben nun unten links eine Übersicht auf alle Klassen dieses Pakets. Konsultieren Sie die Docs der Klasse &quot;BigDecimal&quot; und verwenden Sie die Klasse um folgende Aufträge zu erledigen:</p>
+<p>-Multiplizieren Sie folgende beiden Zahlen:</p>
+<p>1e402</p>
+<p>2000</p>
+<p>-Dividieren Sie folgende beiden Zahlen:</p>
+<p>1e1024</p>
+<p>2e1023</p>
+</section>
+<section id="aufgabe-2-dateien-schreiben" class="level3">
+<h3>Aufgabe 2: Dateien schreiben</h3>
+<p>Öffnen Sie in der Onlinedokumentation das Paket &quot;java.io&quot; und dort die Klasse &quot;FileReader&quot;. In der letzten Aufgabe haben Sie Code erstellt, der eine Datei öffnet und deren Inhalt in die Konsole schreibt.</p>
+<p>Verfassen Sie mit Hilfe der letzten Aufgabe und der Onlinedokumentation nun ein Stücklein Code, das einen String (z.B: &quot;Hallo Welt!&quot;) in eine vorher definierte Datei schreibt.</p>
+<p>Wie könnten Sie die zu schreibende Datei öffnen, so dass sie nicht neu geschrieben wird, sondern der neue Inhalt hinten angehängt wird? Konsultieren Sie die Onlinedokumentation um es herauszufinden.</p>
+</section>
+<section id="aufgabe-3-kalender" class="level3">
+<h3>Aufgabe 3: Kalender</h3>
+<p>In der letzten Aufgabe haben Sie einige Objekte für das Datum erstellt. Öffnen Sie nun in der Onlinedokumentation das Paket &quot;java.util&quot; und dann die Klasse &quot;GregorianCalendar&quot;, welche Sie bereits verwendet haben. Studieren Sie diese Beschreibung.</p>
+<ul>
+<li><p>Schreiben Sie nun einen Code, der alle Schaltjahre zwischen 1950 und 2050 auf der Konsole ausgibt. Sie können das Jahr einfach als Integer annehmen. (Schaltjahr -&gt; engl. Leapyear).</p></li>
+<li><p>Erweitern Sie das Beispielprogramm der letzten Übung (dasjenige welches das aktuelle Datum anzeigt) so, dass das aktuelle Datum in einer ganz speziellen Formatierung angezeigt wird; nämlich: &quot;Tag, dd. Monat yyyy&quot; also z.B. &quot;Sonntag, 7. Oktober 2007&quot;.</p></li>
+</ul>
+<p>Konsultieren Sie dazu die Onlinedokumentation zur Klasse &quot;SimpleDateFormat&quot; im Paket &quot;java.text&quot;.</p>
+</section>
+</section>
+<section id="vorgehensweise-17" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-17" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Programme gemäss Aufgabenstellung erstellt.</p>
+<p><strong>Zeitbedarf:</strong> 60 Min.</p>
+<ol start="15" type="1">
+<li>Die Java Dokumentation</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 15-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="robosim-neues-projekt-erstellen-16-1" class="level1">
+<h1>RoboSim: Neues Projekt erstellen 16-1</h1>
+<section id="ziel-18" class="level2">
+<h2>Ziel</h2>
+<p>Projekt erstellen</p>
+</section>
+<section id="art-der-aufgabe-18" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-18" class="level2">
+<h2>Ausgangslage</h2>
+<p>Sie haben in einer früheren Übung die Klasse &quot;Position&quot; erstellt.</p>
+</section>
+<section id="aufgabenstellung-18" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Die Leute von der ESA, für die Sie die Robotersteuerung in den vergangenen paar Übungen verfasst haben, sind ziemlich zufrieden mit Ihrer Arbeit! Sie sollen nun ein kleines Computerspiel für Propagandazwecke erstellen, in dem man ebenfalls einen Marsroboter steuern können soll. Zudem soll man gegen MarsRoboter anderer Staaten antreten und möglichst viele Marsgesteine sammeln, bevor die anderen MarsRoboter diese sammeln können.</p>
+<p>Gegeben soll ein Spielfeld sein, worauf sich mehrere Roboter und Steine befinden (wieder folgendermassen visualisiert):</p>
+<pre><code>________________
+
+_____________V__
+
+o_______&gt;____o__
+
+________________
+
+__^_____________
+
+_______o__&lt;_____
+
+________________
+
+___o____v_______</code></pre>
+<p>(Die Richtungspfeile sind die Roboter und deren Sichtrichtung, die runden Dinger sind die Marsgesteine.)</p>
+<p>Der Inhalt des Spiels soll nun sein, möglichst viele Steine einzusammen, bevor ein feindlicher Roboter einen einsammelt. Sie sagen den ESA Leuten begeistert zu, denn mit objektorientierter Programmierung sollte es ja nun möglich sein, den Code vom Simulator ganz einfach für das Computerspiel zu übernehmen.</p>
+<p>Ganz allen Code - so merken Sie bald - können Sie aber nicht 1:1 weiterverwenden, da Sie beim vorherigen Simulator zunächst einfach die spannende objektorientierte Programmierweise ein wenig ausprobiert haben, und noch nicht auf maximale Wiederverwertbarkeit und Erweiterbarkeit geachtet haben. Merke: Auch OO kann besser und weniger gut programmiert werden.</p>
+<p>Sie werden nun Schritt für Schritt das gewünschte Computerspiel aufbauen, und dabei soviel wie möglich aus den vorherigen Aufgaben weiterverwenden.</p>
+<p>Erstellen Sie in Eclipse nun ein neues Projekt namens &quot;RoboterSimulation&quot;. Erstellen Sie darin zunächst ein Quelltextverzeichnis namens &quot;src&quot;. In diesem Quelltextverzeichnis erstellen Sie folgende Pakete, so dass Sie folgende Struktur erhalten:</p>
+<pre><code>[x] RoboterSimulation
+
+  [x] src
+
+    [x] ch.modul226.utils
+
+    [x] ch.modul226.position
+
+    [x] ch.modul226.robotersimulation
+
+    [x] ch.modul226.robotersimulation.model
+
+    [x] ch.modul226.robotersimulation.view</code></pre>
+<p>Kopieren Sie nun die früher erstelle Klasse &quot;Position&quot; (Dateiname &quot;Position.java&quot;) von anderen Projekt &quot;Experimente&quot; ins soeben erstellte Paket &quot;ch.modul226.position&quot;. Ins Paket &quot;ch.modul226.utils&quot; kopieren Sie die Klasse &quot;ConsoleReader&quot; (Datei &quot;ConsoleReader.java&quot;), welche Sie von der Lehrperson zur Verfügung gestellt erhalten. Sie können Sie entweder ins Verzeichnis kopieren, wo der Eclipse Workspace liegt (und dann die Ansicht refreshen), oder im Paket eine neue Klasse mit Namen &quot;ConsoleReader&quot; erstellen und den Code der Datei hinein copy-pasten.</p>
+</section>
+<section id="vorgehensweise-18" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-18" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Neues Projekt in Eclipse mit den oben genannten Eigenschaften, Paketen und Klassen</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-1 AS V1.1.doc</p>
+</section>
+</section>
+<section id="vererbungpolymorphismus-16-10" class="level1">
+<h1>Vererbung/Polymorphismus 16-10</h1>
+<section id="ziel-19" class="level2">
+<h2>Ziel</h2>
+<p>Aufgabe analysieren</p>
+</section>
+<section id="art-der-aufgabe-19" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-19" class="level2">
+<h2>Ausgangslage</h2>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="aufgabenstellung-19" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Sie haben folgende Klassen gegeben:</p>
+<pre><code>public abstract class Auto {
+
+    
+
+    protected Integer wert = 5000;
+
+    protected String name = &quot;Auto&quot;;
+
+    
+
+    public void printName() {
+
+        System.out.println(name);
+
+    }
+
+    
+
+    public void printWert() {
+
+        System.out.println(wert);
+
+    }
+
+}
+
+public class VW extends Auto{
+
+    
+
+    private Integer wert = 10000;   
+
+    private String name = &quot;Volkswagen&quot;;
+
+    
+
+    public void printName() {
+
+        System.out.println(name);
+
+    }
+
+    
+
+    public void printWert() {
+
+        System.out.println(wert);
+
+    }
+
+}
+
+public class Porsche extends Auto{
+
+    
+
+    private Integer wert = 20000;   
+
+    private String name = &quot;Porsche&quot;;
+
+}</code></pre>
+<p>Betrachten Sie folgendes Programm:</p>
+<pre><code>    Auto wagen1 = new VW();
+
+    Auto wagen2 = new Porsche();
+
+    wagen1.printName();
+
+    wagen1.printWert();
+
+    wagen2.printName();
+
+    wagen2.printWert();</code></pre>
+<p>Beantworten Sie folgende Fragen:</p>
+<p>Das Programm wird so kompilieren. Warum kann man in die Variable &quot;wagen1&quot; ein Objekt vom Typ VW instanziieren, obwohl &quot;wagen1&quot; vom Typ &quot;Auto&quot; ist?</p>
+<p>Welches wird die Bildschirmausgabe des Programmes sein? Warum?</p>
+</section>
+<section id="vorgehensweise-19" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung. Wenn Sie nicht weiter wissen, dürfen Sie die Programmen selbstverständlich auch abschreiben und ausführen lassen.</p>
+</section>
+<section id="erwartete-resultate-19" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Beantwortete Fragen auf einem Papier.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-10 AS V1.1.doc</p>
+</section>
+</section>
+<section id="robosim-finden-der-wichtigsten-klassen-16-2" class="level1">
+<h1>RoboSim: Finden der wichtigsten Klassen 16-2</h1>
+<section id="ziel-20" class="level2">
+<h2>Ziel</h2>
+<p>Aufgabe analysieren</p>
+</section>
+<section id="art-der-aufgabe-20" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-20" class="level2">
+<h2>Ausgangslage</h2>
+<p>In Eclipse neues Projekt erstellt.</p>
+</section>
+<section id="aufgabenstellung-20" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Das Spiel Robotersimulation hat (vereinfacht) den folgenden groben Aufbau:</p>
+<p>Die primäre Klasse ist also &quot;RoboterSimulation&quot;. Diese hat ein &quot;Spielfeld&quot;, welches alle Roboter und Steine verwaltet. Erstellen Sie im Paket &quot;ch.modul226.robotersimulation&quot; also eine Klasse &quot;RoboterSimulation&quot; und spendieren Sie ihr eine main-Funktion. Dies wird die Hauptklasse des Spiels. Platzieren Sie darin gleich eine Bildschirmausgabe, die folgenden Text an der Konsole ausgibt:</p>
+<pre><code>&quot;Willkommen zur Robotersimulation!&quot;
+
+&quot;Bitte wählen Sie die Anzahl Gegner!&quot;</code></pre>
+<p>Die Klasse Robotersimulation hat darüberhinaus folgende Eigenschaften:</p>
+<hr />
+<p>Class RoboterSimulation</p>
+<hr />
+<ul>
+<li><p>feldBreite: Integer</p></li>
+<li><p>feldHoehe: Integer</p></li>
+<li><p>anzahlRoboterTotal: Integer</p></li>
+<li><p>anzahlRoboterFreundlich: Integer</p></li>
+<li><p>anzahlSteine: Integer</p></li>
+<li><p>spielfeld: Spielfeld</p></li>
+</ul>
+<hr />
+<ul>
+<li>spielBeendet(): Boolean</li>
+</ul>
+<hr />
+<p>Die Eigenschaften sind selbsterklärend. Es handelt sich dabei um Klassenvariablen. Da sie später eventuell noch geändert werden sollen, markieren Sie sie nicht als konstant. Setzen Sie gleich folgende Werte:</p>
+<pre><code>feldBreite = 16;
+
+feldHoehe = 8;
+
+anzahlRoboterTotal = 2;
+
+anzahlRoboterFreundlich = 1;
+
+anzahlSteine = 5;</code></pre>
+<p>Die Methode &quot;spielBeendet()&quot; können Sie im Moment bis auf den Rückgabewert &quot;true&quot; leer lassen. Sie wird später abklären, ob die Runde fertig ist, indem sie zählt, ob noch Steine im Spiel vorhanden sind.</p>
+<p>Weiter erstellen Sie im Paket &quot;ch.modul226.robotersimulation.model&quot; eine Klasse &quot;Spielfeld&quot; mit folgenden Eigenschaften:</p>
+<hr />
+<p>Class Spielfeld</p>
+<hr />
+<ul>
+<li><p>breite: Integer</p></li>
+<li><p>hoehe: Integer</p></li>
+<li><p>itemListe: ArrayList<Item></p></li>
+</ul>
+<hr />
+<ul>
+<li><p>Spielfeld(b: Integer, h: Integer): void</p></li>
+<li><p>getBreite(): Integer</p></li>
+<li><p>getHoehe(): Integer</p></li>
+<li><p>setBreite(b: Integer): void</p></li>
+<li><p>setHoehe(h: Integer): void</p></li>
+<li><p>addItem(i: Item): void</p></li>
+<li><p>getItemListe(): itemListe</p></li>
+<li><p>update(): void</p></li>
+</ul>
+<hr />
+<p>Die Variablen sind Instanzvariablen.</p>
+<p>Der Konstruktor verlangt gleich die Dimensionen des Spielfelds, die sie dann den Variablen zuweisen. Mittels addItem können Sie ein Item (Roboter oder Stein) der Liste hinzufügen, mittels getItemListe können sie die Liste abrufen. Verwenden Sie in &quot;addItem&quot; die ArrayListenmethode &quot;add&quot; zum Hinzufügen eines Elements.</p>
+<p>Für die Liste der Items (Roboter und Steine) verwenden Sie hier eine neue Datenstruktur; die ArrayList. Sie müssen dazu das Paket &quot;java.util.ArrayList&quot; einbinden. Gegenüber dem normalen Array hat die ArrayListe einige Vorteile. Diese werden Sie später noch erfahren. Instanziieren Sie im Konstruktor gleich diese Arraylist:</p>
+<p><code>itemListe = new ArrayList&lt;Item&gt;();</code></p>
+<p>Wie Sie sehen, müssen Sie im Gegensatz zum Array keine Länge angeben, dafür wird der Typ (also Objekte welcher Art darin gespeichert werden sollen) in spitzigen Klammern mitgeliefert.</p>
+<p>Die Methode &quot;update&quot; lassen Sie im Moment noch leer.</p>
+<p>Momentan wird Ihnen noch ein Fehler angezeigt, dass keine Klasse namens &quot;Item&quot; existiert. Damit diese Fehlermeldung verschwindet können Sie im Paket &quot;ch.modul226.robotersimulation.model&quot; eine neue leere Klasse &quot;Item&quot; erstellen.</p>
+<p>Lassen Sie das Programm nun laufen. Auf der Konsole sollte wie eingegeben erscheinen:</p>
+<pre><code>&quot;Willkommen zur Robotersimulation!&quot;
+
+&quot;Bitte wählen Sie die Anzahl Gegner!&quot;</code></pre>
+<p>Fügen Sie in der Klasse &quot;RoboterSimulation&quot; in der Main-Funktion direkt unter der Bildschirmausgabe neuen Code ein:</p>
+<p>Zuerst machen Sie eine Abfrage nach der Anzahl Computergegner. Nehmen Sie dazu die Klasse &quot;ConsoleReader&quot; zu Hilfe. Probieren Sie selbstständig und mit Hilfe des Lehrmittels, eine solche Abfrage einzurichten, so dass die Anzahl (ein Integer) in eine neue lokale Variable &quot;anzahlGegner&quot; geschrieben wird. Lassen Sie diesen Wert gleich in die Klassenvariable &quot;anzahlRoboterTotal&quot; schreiben; vergessen Sie dabei aber nicht die &quot;anzahlRoboterFreundlich&quot; welche Sie bereits definitiv definiert haben.</p>
+<p>Geben Sie die Anzahl Gegner anschliessend gleich an der Konsole aus:</p>
+<p><code>System.out.println(&quot;Anzahl Gegner: &quot; + anzahlGegner);</code></p>
+<p>Dann instanziieren Sie das Spielfeld. (Achtung: Als Parameter des Konstruktors müssen Sie bekanntlich die Feldgrösse angeben!)</p>
+<p>Dann fügen Sie folgenden Code ein:</p>
+<pre><code>{
+
+  // Zeichne Feld
+
+            
+
+  // Frage Spieler nach Bewegungsrichtung
+
+  // Bewege Roboter des Spielers entsprechend
+
+  // Bewege andere Roboter
+
+}</code></pre>
+<p>Es handelt sich dabei einfach um einen Code-Block. Sie werden zu einem späteren Zeitpunkt eine while-Schleife daraus machen, aber zum Testen soll das Stück einfach einmal durchlaufen werden, weshalb Sie die Schleifenkennzeichnung (&quot;while(...)&quot;) noch nicht einfügen.</p>
+<p>Fügen Sie nach dem Kommentar &quot;// Frage Spieler nach Bewegungsrichtung&quot; nun eine Abfrage ein, die nach der Richtung fragt. Nehmen Sie dazu wiederum die Klasse &quot;ConsoleReader&quot; zu Hilfe. Probieren Sie selbstständig und mit Hilfe des Lehrmittels, eine solche Abfrage einzurichten, so dass die Richtung (ein String) in eine neue lokale Variable &quot;richtung&quot; geschrieben wird.</p>
+<p>Auf der nächsten Zeile geben Sie diese Richtung gleich aus:</p>
+<p><code>System.out.println(&quot;Richtung: &quot; + richtung);</code></p>
+<p>Führen Sie das Programm aus und schauen Sie, ob es richtig funktioniert.</p>
+</section>
+<section id="vorgehensweise-20" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-20" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Die Klassen gemäss Angaben implementiert. Folgende Bildschirmausgabe soll beim Start des Programms erscheinen:</p>
+<pre><code>Willkommen zur Robotersimulation!
+
+Bitte wählen Sie die Anzahl Gegner!
+
+ _&gt;1
+
+Anzahl Gegner: 1
+
+Richtung? (n,s,w,e) _&gt;n
+
+Richtung: n</code></pre>
+<p><strong>Zeitbedarf:</strong> 120 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-2 AS V1.1.doc</p>
+</section>
+</section>
+<section id="robosim-die-benutzerschnittstelle-wird-realisiert-16-3" class="level1">
+<h1>RoboSim: Die Benutzerschnittstelle wird realisiert 16-3</h1>
+<section id="ziel-21" class="level2">
+<h2>Ziel</h2>
+<p>Entwurfsmuster kennen und anwenden</p>
+</section>
+<section id="art-der-aufgabe-21" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-21" class="level2">
+<h2>Ausgangslage</h2>
+<p>Vorherige Projektaufgaben bearbeitet.</p>
+</section>
+<section id="aufgabenstellung-21" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Sie haben bereits folgende Paketstruktur erzeugt und damit automatisch den Weg für eine Trennung von Ausgabe und Programmlogik gebahnt:</p>
+<pre><code>[x] RoboterSimulation
+
+  [x] src
+
+    [x] ch.modul226.utils
+
+    [x] ch.modul226.position
+
+    [x] ch.modul226.robotersimulation
+
+    [x] ch.modul226.robotersimulation.model
+
+    [x] ch.modul226.robotersimulation.model.strategy
+
+    [x] ch.modul226.robotersimulation.view</code></pre>
+<p>In dieser Aufgabe werden Sie nun die &quot;View&quot;, also die Ansicht vorbereiten. Da in diesem Spiel &quot;RoboterSimulation&quot; die einzelnen Objekte auf eine andere Art aufbewahrt werden als Sie das bei der Marsrobotersimulation getan haben, können Sie die Ausgabeklasse davon nicht ohne weiteres wiederverwerten. Sie werden sie aber trotzdem zunächst einmal einfach kopieren.</p>
+<p>Kopieren Sie also die Klasse &quot;Ausgabe&quot; aus dem anderen Projekt &quot;Experimente&quot; in das Paket &quot;ch.modul226.robotersimulation.view&quot; des neuen Projekts &quot;RoboterSimulation&quot;.</p>
+<p>Sie werden die Klasse &quot;Ausgabe&quot; nun so verändern, damit sie für die Objekte des aktuellen Spiels vorbereitet ist. Dazu tun Sie folgendes:</p>
+<p>Ändern Sie die Berechtigungen der Methode &quot;addObject&quot; (alle Versionen) nach &quot;private&quot;. Diese Methoden werden Sie ab sofort nur noch Klassenintern verwenden.</p>
+<p>Fügen Sie nun eine neue Instanzvariable &quot;spielfeld&quot; vom Typ &quot;Spielfeld&quot; hinzu (Sie müssen dazu auch das entsprechende Paket importieren). Zudem eine neue öffentliche Methode:</p>
+<p>setSpielfeld(s: Spielfeld): void</p>
+<p>Mit dieser Methode können Sie der Ausgabeklasse nun eine Referenz auf das aktuelle Spielfeld übergeben. Die einzelnen Objekte (Roboter und Steine) holt sich das Ausgabeobjekt dann gleich selber, da diese ja im Spielfeld in einer Liste gespeichert sind.</p>
+<p>Ändern Sie die beiden Klassenvariablen &quot;sizeX&quot; und &quot;sizeY&quot; zu Instanzvariablen. (Dies ist einfach ein Hack, weil Sie die Klasse Ausgabe mehrmals verwenden werden, aber nicht jedesmal die Feldgrösse mitnehmen möchten.)</p>
+<p>Ändern Sie nun den Namen der Methode &quot;display&quot; nach &quot;displayMap&quot; und fügen neu folgende Methoden hinzu:</p>
+<table style="width:46%;">
+<colgroup>
+<col style="width: 45%"></col>
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">+ displayWelcome(): void</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">+ displayPlayerQuestion(): void</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">+ askPlayer(): Integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">+ askDirection(): String</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">+ displayScore(): void</td>
+</tr>
+</tbody>
+</table>
+<p>Implementieren Sie diese Methoden. &quot;displayWelcome&quot; zeigt die Willkommensbotschaft an (vgl. in der Klasse &quot;RoboterSimulation&quot; in der Main-Methode). &quot;displayPlayerQuestion&quot; zeigt die Frage nach der Anzahl Spieler an. &quot;askPlayer&quot; fragt nach der Anzahl Spieler und gibt die Antwort zurück (es kapselt also die Abfrage via &quot;ConsoleReader&quot;). &quot;askDirection&quot; fragt den Benutzer nach der Richtung und gibt die Antwort zurück. &quot;displayScore&quot; ist für ganz am Schluss des Spiels, es zeigt dann die Punktzahl der einzelnen Spieler an. Erstellen Sie hier vorerst einfach eine Bildschirmausgabe die lautet &quot;Hier wäre die Punkteliste!&quot;.</p>
+<p>Schreiben Sie diese Methoden und ersetzen Sie die entsprechenden Konsolenausgaben in der Klasse &quot;RoboterSimulation&quot; damit (Sie müssen die Klasse &quot;Ausgabe&quot; dort natürlich zuerst zu einem Objekt instanziieren)! Probieren Sie das Programm aus. Es sollte noch genau gleich reagieren wie vor den Änderungen.</p>
+<p>Den Inhalt der Methode &quot;displayMap&quot; werden Sie zu einem späteren Zeitpunkt aktualisieren.</p>
+</section>
+<section id="vorgehensweise-21" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-21" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Umsetzen der in der Aufgabenstellung formulierten Aufgabenstellung.</p>
+<p>Die Bildschirmausgabe des Programms soll nach wie vor lauten:</p>
+<pre><code>Willkommen zur Robotersimulation!
+
+Bitte wählen Sie die Anzahl Gegner!
+
+Anzahl Gegner: _&gt;1
+
+Anzahl Gegner: 1
+
+Richtung? (n,s,w,e) _&gt;n
+
+Richtung: n</code></pre>
+<p><strong>Zeitbedarf:</strong> 90 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-3 AS V1.1.doc</p>
+</section>
+</section>
+<section id="robosim-vererbung-ist-ein-beziehung-16-4" class="level1">
+<h1>RoboSim: Vererbung: &quot;ist ein&quot;-Beziehung 16-4</h1>
+<section id="ziel-22" class="level2">
+<h2>Ziel</h2>
+<p>Objektorientierte Konzepte kennen und anwenden</p>
+</section>
+<section id="art-der-aufgabe-22" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-22" class="level2">
+<h2>Ausgangslage</h2>
+<p>Vorhergehende Aufträge des Projekts erfüllt.</p>
+</section>
+<section id="aufgabenstellung-22" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Nun geht es ans Eingemachte. Sie haben sich vielleicht bereits gefragt, warum Sie in der Klasse &quot;Spielfeld&quot; diese Datenstruktur:</p>
+<p>private ArrayList<Item> itemListe;</p>
+<p>zur Aufbewahrung der Objekte erstellen mussten, obwohl es doch gar keine solchen &quot;Items&quot; gibt, lediglich &quot;Roboter&quot; und &quot;Steine&quot;?</p>
+<p>Des Rätsels Lösung: Sie werden nun Roboter und Steine erzeugen, die alle von &quot;Item&quot; abstammen. Die Begründung für diese &quot;Zusammenlegung&quot; ist: Da die beiden Objekte sehr ähnlich sind, kann man einige Eigenschaften gemeinsam nutzen (z.B. die Position). Die Vererbungsstruktur der &quot;Items&quot; die Sie demnächst implementieren werden, sieht so aus (BON Diagramm). Ein Pfeil steht dabei für &quot;erbt von&quot;:</p>
+<p>Erstellen Sie nun als im Paket &quot;ch.modul226.robotersimulation.model&quot; drei neue Klassen &quot;Roboter&quot;, &quot;Stein&quot; und &quot;Item&quot; (bzw. zwei, da Sie &quot;Item&quot; ja schon vorher erstellten).</p>
+<p>&quot;Stein&quot; und &quot;Roboter&quot; erben von &quot;Item&quot; wobei die Klassen folgende Eigenschaften haben:</p>
+<hr />
+<p>Abstract class Item</p>
+<hr />
+<p>= pos: Position</p>
+<p>= name: String</p>
+<p>= punkte: Integer</p>
+<hr />
+<ul>
+<li><p>Item(): void</p></li>
+<li><p>setPosition(x: Integer, y: Integer): void</p></li>
+<li><p>getPositionX(): Integer</p></li>
+<li><p>getPositionY(): Integer</p></li>
+<li><p>getPosition(): Position</p></li>
+<li><p>setName(n: String): void</p></li>
+<li><p>getName(): String</p></li>
+<li><p>setPunkte(p: Integer): void</p></li>
+<li><p>getPunkte(): Integer</p></li>
+</ul>
+<hr />
+<hr />
+<p>Class Roboter (extends Item)</p>
+<hr />
+<ul>
+<li><p>richtung: String</p></li>
+<li><p>strategie: Strategie</p></li>
+</ul>
+<hr />
+<ul>
+<li><p>Roboter(): void</p></li>
+<li><p>moveUp(): void</p></li>
+<li><p>moveDown(): void</p></li>
+<li><p>moveLeft(): void</p></li>
+<li><p>moveRight(): void</p></li>
+<li><p>setDirection(d: String): void</p></li>
+<li><p>getDirection(): String</p></li>
+<li><p>nextMove(s: Spielfeld): void</p></li>
+<li><p>setStrategie(s: Strategie): void</p></li>
+</ul>
+<hr />
+<hr />
+<p>Class Stein (extends Item)</p>
+<hr />
+<hr />
+<hr />
+<p>Implementieren Sie diese Klassen. &quot;Roboter&quot; hat die selben Eigenschaften wie diejenige der Experimente, z.B. bezüglich Richtung und Positionsänderung. Die Konsolenausgaben können Sie nun allerdings weglassen.</p>
+<p>Für die Klasse Strategie, die noch nicht existiert, erstellen Sie im Paket &quot;ch.modul226.robotersimulation.model.strategy&quot; eine neue, leere Klasse &quot;Strategie&quot;. Sie werden sie später vervollständigen. Im Konstruktor von &quot;Item&quot; setzen Sie die Position auf 0/0 und die Punkte ebenfalls auf 0. In der Klasse &quot;Roboter&quot; müssen Sie den Konstruktor teilweise 'überschreiben', damit Sie noch die Richtung auf Norden (&quot;N&quot;) initialisieren können.</p>
+<p>Die Methoden &quot;nextMove&quot; in der Klasse &quot;Roboter&quot; können Sie im Moment noch leer lassen. Später wird diese einen Zug auslösen.</p>
+<p>&quot;setStrategie&quot; weist die übergebene Strategie der Instanzvariablen &quot;strategie&quot; zu.</p>
+</section>
+<section id="vorgehensweise-22" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-22" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Die oben vorgestellten Klassen implementiert.</p>
+<p><strong>Zeitbedarf:</strong> 90 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-4 AS V1.1.doc</p>
+</section>
+</section>
+<section id="robosim-simulation-zusammenfügen-16-5" class="level1">
+<h1>RoboSim: Simulation zusammenfügen 16-5</h1>
+<section id="ziel-23" class="level2">
+<h2>Ziel</h2>
+<p>Objektorientierte Konzepte kennen und anwenden</p>
+</section>
+<section id="art-der-aufgabe-23" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-23" class="level2">
+<h2>Ausgangslage</h2>
+<p>Bisherige Aufgaben des Projekts gelöst.</p>
+</section>
+<section id="aufgabenstellung-23" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Sie haben nun fast alle Vorbereitungen getroffen, nun können Sie die Items in die Simulation einfügen. Erledigen Sie folgende Aufgaben, um eine erste, lauffähige Simulation zu erhalten:</p>
+<p>-Wechseln Sie zur Klasse &quot;RoboterSimulation&quot;. In der Main-Funktion haben Sie an einem bestimmten Punkt nach der Anzahl Computergegner gefragt und danach das Objekt &quot;Spielfeld&quot; instanziiert. Zu diesem Zeitpunkt im Programmablauf wissen Sie bereits, wieviele Computergegner der Spieler wünscht und haben eine Instanz von &quot;Spielfeld&quot;.</p>
+<p>Fügen Sie nun also unmittelbar nach der Instanziierung von &quot;Spielfeld&quot; drei Schleifen ein, welche die Steine (Anzahl ist in einer Klassenvariablen festgelegt) und die Roboter dem Spielfeld hinzufügen (eine Schleife für die freundlichen Roboter, eine für die feindlichen). Sie müssen dazu jeweils ein neues Objekt erstellen (&quot;Roboter&quot; bzw. &quot;Stein&quot;), diesem eine Position geben (wie bei den Experimenten wieder zufällig!), einen Namen geben und das Objekt dem Spielfeld hinzufügen (vgl. &quot;addItem&quot;). Weisen Sie dabei den Steinen jeweils den Namen &quot;Marsgestein&quot; zu (&quot;setName&quot;), den feindlichen (später Computergesteuerten) Robotern den Namen &quot;Computergegner&quot; und den von Menschen gesteuerten freundlichen Robotern jeweils &quot;Player i&quot; wobei i eine fortlaufende Zahl grösser gleich 1 ist (der erste Spieler soll also &quot;Player 1&quot;, der zweite &quot;Player 2&quot; heissen).</p>
+<p>-Fügen Sie in der Klasse &quot;RoboterSimulation&quot; beim entsprechenden Kommentar (&quot;// Zeichne Feld&quot;) den Aufruf &quot;displayMap&quot; des Ausgabeobjekts auf. Dieser soll eine grafische Übersicht über die Karte ausgeben. Vergessen Sie nicht, der Ausgabeklasse vor dem Aufruf mittels &quot;setSpielfeld&quot; das aktuelle Spielfeld zu übergeben. Tun Sie dies am Besten weiter oben im Programm direkt nach der Instanziierung des Spielfeldobjekts.</p>
+<p>Führen Sie das Programm aus. Es sollte unter anderem die leere Karte erscheinen (dies weil wir die Roboter und Steine noch nicht zur Karte hinzugefügt haben):</p>
+<pre><code>Willkommen zur Robotersimulation!
+
+Bitte wählen Sie die Anzahl Gegner!
+
+Anzahl Gegner: _&gt;2
+
+________________
+
+________________
+
+________________
+
+________________
+
+________________
+
+________________
+
+________________
+
+________________
+
+Richtung? (n,s,w,e) _&gt;n
+
+Richtung: n</code></pre>
+<p>Damit die Ausgabe der Karte funktioniert sind nun noch einige Änderungen notwendig: Im Moment sind im Objekt &quot;Ausgabe&quot; die Positionsinformationen über die Roboter und Steine nur implizit vorhanden, nämlich in der Referenz zum &quot;Spielfeld&quot;.</p>
+<p>Wechseln Sie also in die Klasse &quot;Ausgabe&quot; und verändern Sie die Methode &quot;displayMap&quot; so, dass zunächst mit zwei verschachtelten Schleifen das komplette Spielfeld mit &quot;leerIcon&quot; (also dem Underscore) überschrieben wird (sozusagen ein Screenreset!).</p>
+<p>Dann sollen in einer Schleife alle Elemente in der &quot;itemListe&quot; von &quot;Spielfeld&quot; abgearbeitet werden und dem Array der Klasse &quot;Ausgabe&quot; hinzugefügt (via &quot;addObject&quot;). Tun Sie dies z.B. mittels einem Iterator:</p>
+<pre><code>Iterator&lt;Item&gt; it = spielfeld.getItemListe().iterator();
+
+while(it.hasNext()) {
+
+    Item o = it.next();
+
+            
+
+    // Nun ist das aktuelle Item (Roboter oder Stein) in &quot;o&quot; gespeichert
+
+    // Sie können darauf ganz normal zugreifen.
+
+}</code></pre>
+<p>Finden Sie in der Schleife nun mittels &quot;instanceof&quot; heraus, ob das momentane Objekt vom Typ &quot;Roboter&quot; oder vom Typ &quot;Stein&quot; ist und rufen Sie die passende Ausprägung von &quot;addObject&quot; auf (Sie erinnern sich, die Methode ist überladen!) um das Objekt hinzuzufügen.</p>
+<p>Beachten Sie: Um einen Roboter einzufügen, benutzen Sie ja die Methode &quot;addObject&quot; mit drei Parametern, wobei der dritte Parameter die Richtung ist. Da aber &quot;getDirection()&quot; nicht in der Klasse &quot;Item&quot; sondern erst in &quot;Roboter&quot; definiert ist, müssen Sie eine Typumwandlung machen, sonst kompiliert das Programm nicht.</p>
+</section>
+<section id="vorgehensweise-23" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-23" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Umsetzung der oben genannten Änderungen.</p>
+<p>Beim Start des Programms soll folgende Ausgabe erscheinen:</p>
+<pre><code>Willkommen zur Robotersimulation!
+
+Bitte wählen Sie die Anzahl Gegner!
+
+Anzahl Gegner: _&gt;1
+
+________________
+
+________________
+
+____o____^______
+
+o_______________
+
+____________o__^
+
+____________o___
+
+___o____________
+
+________________
+
+Richtung? (n,s,w,e) _&gt;n
+
+Richtung: n</code></pre>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-5 AS V1.1.doc</p>
+</section>
+</section>
+<section id="robosim-verhalten-erstellen-16-6" class="level1">
+<h1>RoboSim: Verhalten erstellen 16-6</h1>
+<section id="ziel-24" class="level2">
+<h2>Ziel</h2>
+<p>Objektorientierte Konzepte kennen und anwenden</p>
+</section>
+<section id="art-der-aufgabe-24" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-24" class="level2">
+<h2>Ausgangslage</h2>
+<p>Bisherige Aufträge des Projekts erfüllt.</p>
+</section>
+<section id="aufgabenstellung-24" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Das Spiel &quot;RoboterSimulation&quot; funktioniert nun soweit, dass das Spielfeld mit den entsprechenden Figuren (Steine und die beiden Arten von Robotern) bevölkert wird. Ein sehr wichtiger Teil, nämlich die Steuerung und die &quot;künstliche Intelligenz&quot; fehlt aber noch momentan. Diese werden Sie in dieser Aufgabe nun einbauen und das Spiel somit vollenden.</p>
+<p>Öffnen Sie zunächst die Klasse &quot;RoboterSimulation&quot;. Bearbeiten Sie die Methode &quot;spielBeendet&quot; so, dass sie &quot;false&quot; zurückgibt, wenn noch Steine auf dem Spielfeld existieren und &quot;true&quot;, wenn keine Steine mehr existieren. Sie können z.B. wieder einen Iterator verwenden (vgl. &quot;displayMap&quot; in Klasse &quot;Ausgabe&quot;) um die Liste der Items zu durchlaufen.</p>
+<p>Erstellen Sie dann in der Main-Funktion der Klasse &quot;RoboterSimulation&quot; eine while-Schleife um den bereits eingefügten Block:</p>
+<pre><code>{
+
+  //  Zeichne Feld
+
+  
+
+  // etc.
+
+}</code></pre>
+<p>Diese while-Schleife soll solange laufen, bis das Spiel beendet ist. Verwenden Sie dazu die Methode &quot;spielBeendet&quot;.</p>
+<p>Wenn Sie das Programm nun ausprobieren, sollte es in einer unendlichen Schleife das Spielfeld anzeigen und nach einer Richtung fragen (sofern Sie dieses Codestück noch nicht auskommentiert haben; sonst wird einfach unendlicherweise das Spielfeld angezeigt).</p>
+<p>Sie haben sich vielleicht gefragt, inwiefern sich die guten Roboter von den bösen Roboter (&quot;Menschliche Spieler&quot; und &quot;Computergegner&quot;) voneinander unterscheiden, da doch beide auf der Klasse &quot;Roboter&quot; basieren und somit identisch sind. Dies ist eine gute Frage und die Antwort dazu lautet: Sie werden unterschiedliche Strategien haben. Und diese Strategien werden Sie nun programmieren.</p>
+<p>Der Trick hierbei wird sein, dass Sie für jede unterschiedliche Handlungsweise eine eigene Klasse erstellen, die von &quot;Strategie&quot; erbt. Diese Klasse steuert dann gewissermassen den Roboter. Und falls Sie einmal eine neue Handlungsweise einbauen möchten, können Sie einfach eine neue Klassen erstellen und einbinden. Das bedingt aber auch, dass sich diese Klassen an eine bestimmte Konvention halten müssen. Dazu aber später mehr.</p>
+<p>Öffnen Sie nun die bereits von Ihnen erstelle Klasse &quot;Strategie&quot; im Paket &quot;ch.modul226.robotersimulation.model.strategy&quot;. Erstellen Sie in diesem Paket zusätzlich die Klassen &quot;AskPlayer&quot; und &quot;SimpleHomer&quot; (die Bezeichnung hat nichts mit den Simpsons zu tun, sondern drückt aus, was die Strategie macht: Sie geht einfach zum nächsten Ziel, dasjenige mit der geringsten Distanz. (Ein Homer ist zu Deutsch eine Brieftaube.))</p>
+<p>&quot;Strategie&quot; ist dabei zu einer abstrakten Klasse zu verändern; &quot;AskPlayer&quot; und &quot;SimpleHomer&quot; erben dabei von &quot;Strategie&quot;. Implementieren Sie die drei Klassen gemäss den folgenden Vorgaben (&quot;getDirection&quot; in der Klasse &quot;Strategie&quot; ist dabei abstrakt):</p>
+<hr />
+<p>Abstract class Strategie</p>
+<hr />
+<p>= currentSpielfeld: Spielfeld</p>
+<p>= currentRoboter: Roboter</p>
+<hr />
+<ul>
+<li><p>setCurrentSpielfeld(s: Spielfeld): void</p></li>
+<li><p>setCurrentRoboter(r: Roboter): void</p></li>
+<li><p>getDirection(): String ( ABSTRAKTE METHODE!!!)</p></li>
+</ul>
+<hr />
+<hr />
+<p>Class AskPlayer (extends Strategie)</p>
+<hr />
+<ul>
+<li>private ausgabe: Ausgabe</li>
+</ul>
+<hr />
+<ul>
+<li>getDirection(): String</li>
+</ul>
+<hr />
+<hr />
+<p>Class SimpleHomer (extends Strategie)</p>
+<hr />
+<hr />
+<ul>
+<li><p>getNearestStone(s: Spielfeld): Stone</p></li>
+<li><p>getDirection(s: Spielfeld): String</p></li>
+</ul>
+<hr />
+<p>Zur Kommunikation mit der Strategieklasse verwendet die Klasse &quot;Roboter&quot; die Methode &quot;getDirection&quot;, welche eine der vier Himmelsrichtungen zurückgibt. Je nach Rückgabewert wird der Roboter mit seinen Methoden (z.B. &quot;moveUp&quot;) bewegt. Um effektiv die Richtung zu bestimmen, benötigt die Strategieklasse natürlich die Liste aller Elemente sowie das aufrufende Objekt im Spiel. Diese wird vorher via &quot;setCurrentSpielfeld&quot; und &quot;setCurrentRoboter&quot; übergeben.</p>
+<p>Lassen Sie zunächst alle Methoden der Klasse &quot;SimpleHomer&quot; leer (verwenden Sie als Rückgabewert für &quot;getNearestStone&quot; ein leeres Objekt vom Typ &quot;Stein&quot;, das sie in der Methode rasch erzeugen. Bei &quot;getDirection&quot; lassen Sie einfach einen leeren String zurückgeben.) und konzentrieren Sie sich auf die Klasse &quot;AskPlayer&quot;.</p>
+<p>Die Methode &quot;getDirection&quot; soll den Benutzer nach der Richtung fragen. In der Klasse &quot;Ausgabe&quot; haben Sie bereits eine Methode definiert, welche diese Aufgabe erfüllt; verwenden Sie diese. Lassen Sie die Eingabe als Rückgabewert zurückgeben.</p>
+<p>Öffnen Sie nun die Klasse &quot;RoboterSimulation&quot;. Zu Beginn wo Sie die Steine und Roboter mittels drei Schleifen erzeugen und in das Spielfeld einfügen tun Sie folgendes: In der Schleife für die menschlichen Spieler erzeigen Sie ein neues Objekt vom Typ &quot;AskPlayer&quot; und weisen jedem erzeugten Roboter dieses Objekt als Strategie zu.</p>
+<p>Dasselbe tun Sie in der Schleife, wo die computergesteuerten Roboter erzeugt werden, nun einfach mit dem Strategieobjekt &quot;SimpleHomer&quot;.</p>
+<p>Weiter ersetzen Sie in der &quot;Mainloop&quot; des Spiels (also in der while Schleife in der Main-Funktion) folgende Zeilen:</p>
+<pre><code>
+  // Frage Spieler nach Bewegungsrichtung
+
+    String richtung = ausgabe.askDirection();
+
+    System.out.println(&quot;Richtung: &quot; + richtung);
+
+    
+
+    // Bewege Roboter des Spielers entsprechend
+
+    
+
+    // Bewege andere Roboter
+</code></pre>
+<p>durch eine Schleife, welche alle Element in der itemListe durchgeht und - falls es sich um einen Roboter handelt (vgl. &quot;instanceof&quot;) - dann dessen Methode &quot;nextMove()&quot; aufruft. Zu diesem Zweck lassen Sie die ArrayList zu einem Array konvertieren und durchlaufen diesen dann mit einer for-Schleife:</p>
+<p><code>Object[] liste = spielfeld.getItemListe().toArray();</code></p>
+<p>Nach diesem Aufruf sind also die Elemente der ArrayListe im Array Liste gespeichert und können mit der for-Schleife durchlaufen werden.</p>
+<p>Grund für dieses unübliche Vorgehen ist, dass die Struktur der ArrayListe während eines Durchlaufs der Schleife verändert werden kann (z.B. wenn ein Stein entfernt wird). Dies ist in der ArrayListe nicht zulässig.</p>
+<p>Wenn Sie das Spiel laufen lassen, sollte nun (nach der Frage nach der Anzahl Spieler) pro Runde die Karte angezeigt werden und nach der Richtung gefragt werden.</p>
+<p>Im Moment bewegt sich der Roboter aber noch nicht, wenn Sie ihm Anweisungen geben. Erweitern Sie nun also die Methode &quot;nextMove&quot; der Klasse &quot;Roboter&quot; so, dass je nach Rückgabewert von &quot;strategie.getDirection()&quot; der Roboter nach oben, unten, links oder rechts bewegt (mittels &quot;moveUp&quot; etc.). Probieren Sie das Programm anschliessend aus; einer der Roboter sollte sich nun gemäss ihren Vorgaben auf dem Spielfeld bewegen.</p>
+<p>Öffnen Sie nun die Klasse &quot;Spielfeld&quot; und widmen Sie sich der Methode &quot;update&quot;. Erweitern Sie sie so dass sie folgende Signatur hat:</p>
+<p><code>update(r: Roboter): void</code></p>
+<p>Sie soll nach jedem Zug prüfen, ob der übergebene Roboter auf dem selben Feld steht, wie ein Stein. Falls das der Fall ist, soll der Stein aus dem Spielfeld entfernt werden wobei der Roboter einen Punkt zusätzlich erhalt (vgl. &quot;punkte&quot; in &quot;Item&quot;).</p>
+<p>Realisieren Sie dies indem Sie alle Elemente der &quot;itemListe&quot; durchgehen, dabei diejenigen wählen die vom Typ &quot;Stein&quot; sind und die Position vergleichen. Bemerkung: Falls Sie wieder die Iteratorstruktur verwenden, müssen Sie zum Löschen eines Eintrags auf den erzeugen Iterator it verweisen: &quot;it.remove()&quot;</p>
+<p>Fügen Sie nun in der Klasse &quot;RoboterSimulation&quot; in der Spielschlaufe jeweils nach dem Aufruf von</p>
+<p><code>r.nextMove();</code></p>
+<p>gleich noch die Updatefunktion &quot;update&quot; auf.</p>
+<p>Wenn Sie das Spiel nun laufen lassen, sollte Ihr Roboter sowohl steuerbar sein, als auch Steine &quot;aufessen&quot;, auf die er fährt. Nachdem alle Steine aufgegessen sind, sollte das Spiel kommentarlos terminieren. Sie bemerken hoffentlich auch, dass wenn sie aus dem Spielfeld fahren, eine Exception wegen Überschreitung der Arraygrösse (in der Klasse &quot;Ausgabe&quot;) geworfen wird. Dies können Sie im Moment aber ignorieren, spielen Sie einfach so, dass Sie das Feld nicht verlassen.</p>
+<p>Nun fehlen also noch zwei Dinge zum vollendeten Spiel: Die Punkteliste am Schluss und die &quot;künstliche Intelligenz&quot;. Erstellen Sie zunächst die Punkteliste.</p>
+<p>Öffnen Sie die Klasse &quot;Ausgabe&quot; und gehen Sie zur Methode &quot;displayScore&quot;. Im Moment gibt diese einfach den Text &quot;Hier wäre die Punkteliste!&quot; am Bildschirm aus. Erweitern Sie diese so, dass folgende Ausgabe sinngemäss am Bildschirm ausgegeben wird:</p>
+<p>~<sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub> Punkteliste</p>
+<hr />
+<p>Player 1: 5</p>
+<p>Computergegner: 2</p>
+<p>Computergegner: 4</p>
+<hr />
+<p>Gewinner: Player 1</p>
+<hr />
+<p><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub>~</p>
+<p>Dazu durchlaufen Sie in der Methode &quot;displayScore&quot; die Liste der Items (aus Spielfeld) und schreiben jeden vom Typ &quot;Roboter&quot; inklusive Punktzahl auf die Konsole. Gleichzeitig behalten Sie in einer lokalen Variablen immer denjenigen Roboter, der die höchste Punktzahl hat. Diesen können Sie dann ganz am Schluss ausgeben. Initialisieren Sie dazu vor der Schleife eine Variable vom Typ &quot;Roboter&quot; und weisen Sie ihr &quot;null&quot; zu. Fragen Sie dann in der Schleife, ob diese bereits initialisiert wurde, also nicht gleich &quot;null&quot; ist. Falls das der Fall ist, vergleichen Sie sie mit dem aktuellen Element, sonst weisen Sie das aktuelle Element einfach zu.</p>
+<p>Rufen Sie die Mehthode &quot;displayScore&quot; dann ganz am Ende der Main-Funktion in der Klasse &quot;RoboterSimulation&quot; auf. Testen Sie, ob die Ausgabe korrekt erfolgt.</p>
+<p>Öffnen Sie nun die Klasse &quot;SimpleHomer&quot; vom Paket &quot;ch.modul226.robotersimulation.model.strategy&quot;. Es bleibt also die Implementierung der Methode &quot;getDirection&quot;. Die Strategie &quot;SimpleHomer&quot; soll also denjenigen Stein suchen, dessen Distanz zum aktuellen Objekt am geringsten ist. Dazu lassen Sie zunächst mit der Hilfsmethode &quot;getNearestStone&quot; den Stein zurückgeben, welcher am nächsten zur aktuellen Position liegt. Es bleibt dann noch die Richtung zu finden, welche den Roboter möglichst schnell zu diesem Stein bringt.</p>
+<p>Implementieren Sie also zuerst die Methode &quot;getNearestStone&quot;, welche als Rückgabewert einen Stein zurückgibt. Durchlaufen Sie einfach alle Items der itemListe und speichern Sie denjenigen mit dem geringsten Abstand. Arbeiten Sie wieder (wie bei der Methode &quot;displayScore&quot; mit einer temporären Variable vom Typ Stein.)</p>
+<p>Nun nehmen Sie sich die Methode &quot;getDirection&quot; vor. Prüfen Sie dort zuerst, ob &quot;getNearestStone&quot; überhaupt einen Rückgabewert geliefert hat (und nicht &quot;null&quot;) Falls nein können Sie z.B. einfach den leeren String übergeben. Die Strategie ist ganz einfach: Der Roboter geht immer in eine der beiden Himmelsrichtungen, die zum nächsten Stein führen. Implementieren Sie die Verhaltensweise, so dass die geeignete Himmelsrichtung zurückgegeben wird.</p>
+<p>Probieren Sie das Spiel anschliessend aus.</p>
+<p>Da nun noch relativ schwierig festzustellen ist, welche Figur vom Menschen gesteuert wird, erweitern Sie die Software noch so, dass man unterscheiden kann, welches Symbol den Spieler repräsentiert. Dies machen Sie folgendermassen:</p>
+<p>Fügen Sie der Klasse &quot;Roboter&quot; eine neue Methode folgender Signatur hinzu:</p>
+<p><code>isHuman(): Boolean</code></p>
+<p>Fügen Sie ausserdem der Klasse &quot;Strategie&quot; eine neue abstrakte Methode hinzu:</p>
+<p><code>isHuman(): Boolean</code></p>
+<p>Ergänzen Sie nun jede abgeleitete Strategie um diese Methode, wobei die Methode einfach &quot;true&quot; zurückgibt, wenn es sich um eine Strategie für menschliche Spieler handelt (&quot;AskPlayer&quot;) und &quot;false&quot; falls es sich um eine Strategie für Computer handelt (&quot;SimpleHomer&quot;).</p>
+<p>Lassen Sie die Methode &quot;isHuman&quot; der Klasse &quot;Roboter&quot; den Rückgabewert der selben Methode der Klasse &quot;Strategie&quot; zurückgeben.</p>
+<p>Wechseln Sie nun in die Klasse &quot;Ausgabe&quot; und fügen Sie folgende Klassenvariable hinzu:</p>
+<p><code>private static final String playerIcon = &quot;X&quot;;</code></p>
+<p>Wenden Sie sich nun der Methode &quot;addObject&quot; zu. Fügen Sie neben den vier bisherigen Abfragen eine fünfte Option hinzu: Wenn als Richtungsstring ein &quot;H&quot; (für Human) übergeben wird, soll in die Tabelle ein playerIcon eingesetzt werden.</p>
+<p>Jetzt müssen Sie nur noch weiter unten in der Methode &quot;displayMap&quot; den Code so anpassen, dass wenn ein Roboter human ist (&quot;isHuman&quot; gleich true) dass dann als Richtungsparameter &quot;H&quot; übergeben wird.</p>
+</section>
+<section id="vorgehensweise-24" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-24" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Simulation sollte nun grundsätzlich funktionieren und spielbar sein (ausser Sie fahren aus dem Rand hinaus!). Am Ende des Spiels erscheint die Punkteliste.</p>
+<p><strong>Zeitbedarf:</strong> 210 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-6 AS V1.1.doc Seite PAGE 6 von NUMPAGE</p>
+</section>
+</section>
+<section id="robosim-exceptions-16-7" class="level1">
+<h1>RoboSim: Exceptions 16-7</h1>
+<section id="ziel-25" class="level2">
+<h2>Ziel</h2>
+<p>Objektorientierte Konzepte kennen und anwenden</p>
+</section>
+<section id="art-der-aufgabe-25" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-25" class="level2">
+<h2>Ausgangslage</h2>
+<p>Vorhergehende Aufgaben gelöst.</p>
+</section>
+<section id="aufgabenstellung-25" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Starten Sie das Programm &quot;RoboterSimulation&quot; und lassen Sie ihre Spielfigur in die Wand hineinlaufen. Es wird ihnen eine Exception angeworfen. Sie besagt, dass Sie ausserhalb der Arraygrenzen eine Zuweisung versuchten. Um zu verhindern, dass so etwas passiert können Sie den entsprechenden Befehl zuerst probieren auszuführen. Tun Sie das in der Klasse &quot;Ausgabe&quot; in der Methode &quot;displayMap&quot; beim Aufruf von &quot;addObject(posX: Integer, posY: Integer, dir: String)&quot;. Verpacken Sie diese Methode in einen try-catch Block, wobei Sie die Exception von Typ &quot;ArrayIndexOutOfBoundsException&quot; abfangen. Als Exceptionhandling machen Sie einfach eine Konsolenausgabe mit dem Inhalt</p>
+<p><code>Item kann ausserhalb des Feldes nicht angezeigt werden!</code></p>
+<p>Sie können dies über Stderr ausgeben:</p>
+<p><code>System.err.println(&quot;Item kann ausserhalb des Feldes nicht angezeigt werden!&quot;);</code></p>
+<p>Probieren Sie die Simulation noch einmal aus und fahren Sie über den Rand des Feldes hinaus. Sie werden feststellen, dass man das Feld quasi verlassen und wieder betreten kann (dies liegt daran, dass das Modell, das dahinter steht, nicht begrenzt ist). Allerdings erscheint währenddessen man ausserhalb des Feldes ist stets diese rote Fehlermeldung von oben.</p>
+<p>Dies ist also nur Symptombekämpfung. Sie möchten in diesem Fall lieber erreichen, dass die Figuren das Spielfeld gar nicht verlassen können. Dies erledigen Sie auf die konventionelle Art, indem Sie eine solche Bewegung nicht zulassen. Es könnte Aufgabe des Objekts &quot;Roboter&quot; sein, selber zu wissen wohin er nicht gehen darf. Dazu müsste er aber die Feldbegrenzungen kennen, was in unserem Modell nicht der Fall ist. Also geht die Verantwortung eine Stufe nach oben, zum Spielfeld. Das Spielfeld schaut, ob alle Items im Spielbereich sind. Falls ein Element das Feld verlassen hat, holt es das Spielfeld zurück. Das führt dazu, dass Sie im Modell für eine kurze Zeit eine Inkonsistenz haben, nämlich zwischen der Phase wo sich der Roboter bewegt (&quot;r.nextMove()&quot;) und dem &quot;Kontrollblick&quot; des Spielfelds (&quot;spielfeld.update(r)&quot;). Diese können Sie in diesem Fall in Kauf nehmen.</p>
+<p>Erweitern Sie also die Methode &quot;update&quot; der Klasse &quot;Spielfeld&quot; so, dass Sie den zu updatenden Roboter (Parameter r) betrachten und prüfen, ob dieser sich ausserhalb des erlaubten Spielfelds befindet. Sollte dies der Fall sein, verändern Sie die Position so, dass sich das Element wieder innerhalb des Spielfelds befindet. Angenommen das Spielfeld hat eine Breite von 10 und eine Höhe von 10. Alle Koordinaten von 0 bis 9 sind also zulässig. Hätte nun ein Roboter eine Koordinate von 10/2 würde das bedeuten, dass es sich eins ausserhalb des Feldes befindet. In diesem Fall wäre die X-Komponente der Koordinate auf 9 zu setzen, so dass die Koordinate 9/2 lauten würde.</p>
+</section>
+<section id="vorgehensweise-25" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-25" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Probieren Sie das Spiel aus und probieren Sie über einen Rand hinauszufahren. Die Spielfigur sollte am Rand stehenbleiben.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-7 AS V1.1.doc</p>
+</section>
+</section>
+<section id="robosim-unittest-mit-junit-16-8" class="level1">
+<h1>RoboSim: Unittest mit JUnit 16-8</h1>
+<section id="ziel-26" class="level2">
+<h2>Ziel</h2>
+<p>Anwendung testen</p>
+</section>
+<section id="art-der-aufgabe-26" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-26" class="level2">
+<h2>Ausgangslage</h2>
+<p>Ein lauffähiges RoboterSimulationsprojekt der vorhergehenden Übungen.</p>
+</section>
+<section id="aufgabenstellung-26" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Nachdem das Spiel &quot;RoboterSimulation&quot; nun auch keine Fehler mehr verursacht, wenn man mit seinem Marsrover über den Rand hinausfährt, können Sie langsam daran denken, die Softwaretests zu machen. Unittests sind für &quot;Units&quot; gedacht, also für kleine Einheiten die für sich selber stehen. Testen Sie im Projekt &quot;RoboterSimulation&quot; folgende beiden Klassen und die angegebenen Methoden:</p>
+<p>Position: distanceTo</p>
+<p>Zunächst wollen Sie wissen, ob diese &quot;distanceTo&quot; Methode richtig funktioniert. Verfassen Sie einen Testcase, wo Sie zwei Objekte des Typs &quot;Position&quot; erzeugen (je mit 3 Dimensionen), ihnen zufällige Koordinaten zuweisen und dann die Distanz zwischen beiden Objekten mittels &quot;distanceTo&quot; zurückgeben lassen. Als Vergleichswert führen Sie die Rechnung auch gleich im Testcase durch und vergleichen dann mit dem Resultat der Methode &quot;distanceTo&quot;.</p>
+<p>Geht der Test erfolgreich aus? Falls nein, wie erklären Sie sich den Fehler? Falls ja: Alle in Ordnung!</p>
+<p>Roboter: setPosition, getPositionX, getPositionY</p>
+<p>Weiter möchten Sie wissen, ob die Positionszuweisung funktioniert. Testen Sie diese der Klasse &quot;Roboter&quot; ebenfalls in einem Testcase. Erzeugen Sie wiederum zwei zufällige Werte und weisen Sie sie einem neu instanziierten Roboter zu. Als Test vergleichen Sie dann den ursprünglichen Wert mit demjenigen, welcher von &quot;getPosition...&quot; zurückgegeben wird.</p>
+</section>
+<section id="vorgehensweise-26" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-26" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Testresultate für die angegebenen Methoden. Natürlich sollten die Tests positiv verlaufen.</p>
+<p><strong>Zeitbedarf:</strong> 60 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-8 AS V1.1.doc</p>
+</section>
+</section>
+<section id="robosim-dokumentation-mit-javadoc-16-9" class="level1">
+<h1>RoboSim: Dokumentation mit JavaDoc 16-9</h1>
+<section id="ziel-27" class="level2">
+<h2>Ziel</h2>
+<p>Anwendung dokumentieren</p>
+</section>
+<section id="art-der-aufgabe-27" class="level2">
+<h2>Art der Aufgabe</h2>
+<p>Lernaufgabe</p>
+</section>
+<section id="ausgangslage-27" class="level2">
+<h2>Ausgangslage</h2>
+<p>Komplettes Projekt &quot;RoboterSimulation&quot; vorliegend.</p>
+</section>
+<section id="aufgabenstellung-27" class="level2">
+<h2>Aufgabenstellung</h2>
+<p>Nun kommen Sie zum letzten und wichtigsten Teil des Projekts - der Dokumentation! Mittels JavaDoc können Sie die wunderbarsten Dokumentationen Ihres Codes erstellen. Einzige kleine Einschränkung: Sie müssen zu jedem Element (Klassen und Methoden) ein spezielles Kommentarstücklein eingefügt haben. Vermutlich haben Sie das schon während dem Programmieren erledigt, nämlich dann wenn Sie eine neue Methode oder Klasse erstellt haben. Falls nein erledigen Sie das jetzt. Im Kontextmenü können sie im Code unter &quot;Source&quot; -&gt; &quot;Generate Element Comment&quot; automatisch einen leeren Codeblock hinzufügen lassen, wenn Sie mit dem Cursor innerhalb einer Methode (oder Klasse) stehen.</p>
+<p>Ergänzen Sie nun also noch Ihren kompletten Code mit Kommentaren, so dass vor jeder Klasse und vor jeder Methode ein JavaDoc Block mit mindestens folgenden Attributen vorliegt:</p>
+<p>Klassen:</p>
+<p>Kurze Beschreibung</p>
+<p><span class="citation" data-cites="author">@author</span></p>
+<p><span class="citation" data-cites="version">@version</span></p>
+<p>Methoden:</p>
+<p>Kurze Beschreibung</p>
+<p><span class="citation" data-cites="param">@param</span> (sofern vorhanden)</p>
+<p><span class="citation" data-cites="return">@return</span> (sofern vorhanden)</p>
+<p>Wenn Sie das erledigt haben, lassen Sie die Dokumentation aller Klassen von Eclipse erledigen.</p>
+</section>
+<section id="vorgehensweise-27" class="level2">
+<h2>Vorgehensweise</h2>
+<p>Bearbeiten Sie die Aufgabe Schritt für Schritt gemäss Aufgabenstellung.</p>
+</section>
+<section id="erwartete-resultate-27" class="level2">
+<h2>Erwartete Resultate</h2>
+<p>Komplette JavaDoc im /doc Verzeichnis des Projekts vorliegend.</p>
+<p><strong>Zeitbedarf:</strong> 30 Min.</p>
+<ol start="16" type="1">
+<li>Projekt</li>
+</ol>
+<p><strong>Referenz:</strong> 226-Uebung 16-9 AS V1.1.doc</p>
+</article>
+</section>
+</section>
+</body>
+</html>

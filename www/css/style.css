@@ -1,0 +1,154 @@
+      article{
+        /*column-count: 2;
+        column-gap: 20px;
+        -moz-column-count: 2;
+        -moz-column-gap: 20px;*/
+      }
+      #left dl dt{
+        background: #EEE;
+        margin-left: 10px;
+        width: 48%;
+        display: inline-block;
+      }
+
+      dl,dd{
+        margin-left: 10px;
+      }
+
+      hr{
+        display: none;
+      }
+
+      dl dt h3, #right ul li p{
+        background: #CBA;
+        border-radius: 6px;
+        padding: 4px 6px;
+        margin-top: 5px;
+      }
+      
+      dt {
+        /*padding: 2px 5px 0 8px;*/
+      }
+
+      a{
+        margin: 0 0 4px 10px;
+      }
+      #right_top{
+
+      }
+
+      #right dl dt dl.active{
+        display: block;
+      }
+
+      #right{
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        height: 94vh;
+        overflow-y: scroll;
+        border-left: 1px solid black;
+        /*margin-left: 5px;*/
+      }
+      
+      #req_mods, #lbv{
+				width: 48%;
+				display:inline-block;
+				margin-right: 3px;
+				background-color: #eee;
+				border-radius: 5px;
+				padding: 0 5px;      
+      }
+
+      #right ul li{
+        list-style: none;
+      }
+
+      #right ul li p{
+        font-size: 1.5em;
+      }
+
+			#lbv a{
+				margin: 0 0;			
+			}
+
+      .two-cols{
+        column-count: 2;
+        -moz-column-count: 2;
+        background: #EEE;
+        padding: 5px 10px 5px 0px;
+      }
+			
+			/* hide hanoks */
+			td b, td table{
+				display: none;
+				border: 1px solid #ddd;
+				padding: 2px;
+				margin: 2px;			
+			}
+						
+			
+			tr{
+				border-bottom: 1px solid #ddd;			
+			}
+			
+			tr:hover{
+				background-color: #ddd;			
+			}			
+			
+			tr.active{
+				background-color: #edd;			
+			}
+			
+			tr td{
+				vertical-align: top;			
+			}			
+			
+			tr td:first-child{
+				font-weight: bold;
+				padding-right: 5px;			
+			}
+			
+			td.text_center{
+				text-align: center;			
+			}
+			
+			/* lightbox */
+			#sOverlay{
+				position: absolute;
+				top: 0px;
+				margin: 0 auto;
+				width: 100%;
+				z-index: 100;
+				background-color: rgba(0,0,0,0.4);			
+			}			
+			
+			#sCenter{
+				width: 80%;
+				margin: 10px auto;
+				padding: 10px 15px;
+				z-index: 101;
+				background-color: white;			
+				height: 95vh;
+				overflow-y: scroll;
+			}			
+					
+			label{
+					display: block;		
+			}
+			input[type=submit]{
+					margin-top: 5px;
+					display: block;		
+			}
+			
+			div.usage{
+				min-width: 400px;
+				width: 50%; 			
+			}
+
+      @media screen and (max-width: 800px){
+        article, .two-cols{
+          column-count: 1;
+          -moz-column-count: 1;
+        }
+      }
