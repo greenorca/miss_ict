@@ -33,6 +33,10 @@
       a{
         margin: 0 0 4px 10px;
       }
+      
+      .pull-right a{
+				display:none;      
+      }
       #right_top{
 
       }
@@ -49,6 +53,12 @@
         overflow-y: scroll;
         border-left: 1px solid black;
         /*margin-left: 5px;*/
+      }
+      
+      #hanoks{
+      	max-height: 70%;
+				overflow-y: scroll;
+				border-bottom: 1px solid #999;
       }
       
       #req_mods, #lbv{
@@ -113,6 +123,14 @@
 				text-align: center;			
 			}
 			
+			tr.has_todo td:first-child{
+				color: red;
+			}
+			
+			p i .has_todo{
+				color: red;
+			}
+			
 			/* lightbox */
 			#sOverlay{
 				position: absolute;
@@ -144,6 +162,10 @@
 			div.usage{
 				min-width: 400px;
 				width: 50%; 			
+			}
+			
+			#editor{
+			
 			}
 
       @media screen and (max-width: 800px){

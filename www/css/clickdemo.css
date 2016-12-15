@@ -1,0 +1,28 @@
+			.clickdemo{
+    		list-style: none;			
+			}    	
+    	.clickdemo li{
+				width: 90%;
+				line-height:2em;
+				font-weight:bold;
+				background-color: white;
+				border: 1px solid #555;
+				border-radius: 3px;
+				margin: 2px auto;
+				padding: 3px 20px;   	
+    	}
+    	
+    	.clickdemo li span{
+    		float: right;
+				padding-right: 5px;    	
+    	}
+    	
+    	.clickdemo li.hot{
+				background-color: red;
+				color: white;    	
+    	}
+    	
+    	.clickdemo li.cold{
+				background-color: blue;
+				color: white;    	
+    	}

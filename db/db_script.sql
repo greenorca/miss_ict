@@ -54,7 +54,7 @@ INSERT INTO `fachschaft` (`id`, `fachschaft`, `vorstand`) VALUES
 DROP TABLE IF EXISTS `ict_module`;
 CREATE TABLE `ict_module` (
   `modul_nr` char(6) CHARACTER SET latin1 NOT NULL,
-  `modul_name` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `modul_name` varchar(180) CHARACTER SET latin1 NOT NULL,
   `id_fachschaft` smallint(6) DEFAULT NULL,
   `bereich` char(4) CHARACTER SET latin1 DEFAULT NULL,
   `semester` smallint(6) DEFAULT NULL,
