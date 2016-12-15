@@ -1,7 +1,7 @@
 # miss_ict
 
 Prototyp zur übersichtlichen Darstellung der ICT-Module im Rahmen der EFZ-Ausbildung Informatiker (API & SYS). Als solches sind die gelieferten Daten insbesondere für Fachschaften ausserhalb DB, API und WEB oft unvollständig.
-
+Zusätzlich gibt es nun Bearbeitungsfunktionen für die Modultabelle sowie die Todos von einzelnen Modulen.
 Fehlende (WISS)-LBVs können mit Modulnummer an schirmer@green-orca.com gesendet werden.
 
 Die Darstellung folgt strikt dem Bauhaus-Prinzip: Form follows function. LBVs und Toolboxen sind von Word in HTML re-konvertiert, damit die Archivierbarkeit und Wartbarkeit sichergestellt ist.
