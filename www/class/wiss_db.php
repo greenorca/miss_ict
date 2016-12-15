@@ -2,7 +2,9 @@
 class wiss_db{
 
 function __construct(){
-	$config = parse_ini_file($_SERVER["DOCUMENT_ROOT"].'/miss_ict.ini.php', $process_sections = "base");
+	$config = parse_ini_file($_SERVER["DOCUMENT_ROOT"].'/miss_ict.ini.php');
+	//var_dump($config);
+	// Create connection	
 	$this->conn = new mysqli($config['host'], $config['user'], $config['pass'], $config['database']);
 
 	// Check connection
@@ -11,6 +13,20 @@ function __construct(){
 	}
 	$this->conn->set_charset("utf8");
 }
+
+/**
+updates $col in row with $PK with $new_val, returns false if that failed
+*/
+function updateModulTable($pk, $col, $new_value) {
+	$sql = "UPDATE ict_module SET ".$col."='".$new_value."' WHERE modul_nr='".$pk."';";
+	error_log('Info from updateModuleTable: '.$sql);
+	if ($this->conn->query($sql)===TRUE){
+		$this->conn->commit();
+		return "OK";
+	}
+	return $this->conn->error;	
+}
+
 
 function checkCredentials($user, $pwd){
 	$sqlx = "SELECT COUNT(*) FROM miss_users WHERE username='".$this->quoteInput($user)."' AND passwd=PASSWORD('".$this->quoteInput($pwd)."');";
@@ -28,7 +44,6 @@ function checkCredentials($user, $pwd){
 
 /* eliminate wierd user input stuff */
 function quoteInput($value){
-
 	return mysqli_real_escape_string($this->conn,$value);
 }
 
@@ -36,11 +51,11 @@ function quoteInput($value){
 returns a list of all modules + informations with no parameters
 returns just the information for a given module $id or even specific attributes ($cols) e.g "modul_nr, modul_name, fachschaft.id as id_fs, fachschaft, bereich, semester, lbv, lessons_ifz, lessons_uifz" 
 */
-function getModuleInfo($id="", $cols="modul_nr, modul_name, fachschaft.id as id_fs, fachschaft, bereich, semester, lbv, lessons_ifz, lessons_uifz"){
+function getModuleInfo($id="", $cols="modul_nr, modul_name, fachschaft.id as id_fs, fachschaft, bereich, semester, lbv, lessons_ifz, lessons_uifz, CHAR_LENGTH(todo) as has_todo"){
 	if ($id!==""){
 		$id = " WHERE modul_nr='".$this->quoteInput($id)."'";
 	}
-	$sqlx = "SELECT ".$cols." FROM ict_module JOIN fachschaft ON ict_module.id_fachschaft=fachschaft.id ".$id." ORDER BY modul_nr;";
+	$sqlx = "SELECT ".$cols." FROM ict_module JOIN fachschaft ON ict_module.id_fachschaft=fachschaft.id ".$id." ORDER BY modul_nr;;";
 	error_log('Info from getModuleInfo: '.$sqlx);
 	$result = array();
 	$myresult = $this->conn->query($sqlx);
@@ -63,19 +78,18 @@ function getFachschaftList(){
 	return $result;
 }
 
-
 /**
- fetch hanoks (html) from database for given module
+ fetch hanoks+todos (html) from database for given module
 */
 function getHanok($id){
-	$sqlx = "SELECT hanoks FROM ict_module WHERE modul_nr='".$this->quoteInput($id)."';";
+	$sqlx = "SELECT modul_nr, hanoks, todo FROM ict_module WHERE modul_nr='".$this->quoteInput($id)."';";
 	error_log('Info from getHanok: '.$id."...".$sqlx);
 	$result = array();
 	$myresult = $this->conn->query($sqlx);
 	while($row = $myresult->fetch_assoc()) {
 		$result[] = $row;
 	}
-	return $result[0]['hanoks'];
+	return json_encode($result);
 }
 
 /**

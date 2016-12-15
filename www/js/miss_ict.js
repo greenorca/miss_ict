@@ -1,11 +1,14 @@
 $(document).ready(function(event){
 	/* handle todo editor + changes */
 	/* http://habibhadi.com/lab/easyeditor/default-example.html */
-	$('#todo').on('dblclick',function (){
-		if ($('#todo_content')!==undefined){
+
+	var isEditingTodo = false;	
+	
+	var editTodo = function(event){
+		if (isEditingTodo==false){
 			$('#todo h2').append('<button id="todo_save">Save</button>');
-			$('#todo').append('<div id="editor">'+$('#todo_content').html()+'</div>');
-			$('#editor').easyEditor({
+			$('#todo').append('<div id="todo_editor">'+$('#todo_content').html()+'</div>');
+			$('#todo_editor').easyEditor({
   			buttons: ['bold', 'italic', 'link', 'h2', 'h3', 'h4', 'alignleft','code', 'list', 'x', 'source'],
   			
 			});
@@ -15,8 +18,9 @@ $(document).ready(function(event){
 				saveEditor);
 			//kick todo_content element
 			$('#todo_content').remove();
+			isEditingTodo=true;
 		}
-	});
+	};
 		
 	/* handle changed table cells */
 	$('.td_edi').on("dblclick",function () {
@@ -45,20 +49,25 @@ $(document).ready(function(event){
 				update: true,
 				modul_id: event.data.modul_nr,
 				col: 'todo',
-				new_val: $('#editor').html(),
+				new_val: $('#todo_editor').html(),
 			}, function (data, status) {
-						
+				/* clean up */ 	
 				if (data=='OK'){
-					
-				}else {
+					$('#todo').append('<div id="todo_content">'+$('#todo_editor').html()+'</div>');
+					$('#todo_editor').remove();
+					$('.easyeditor-wrapper').remove();
+					$('#todo_save').remove();
+				}
+				else {
 					window.alert("Update failed:: "+data);
 				}
+				isEditingTodo=false;
 			});
 	};	
 	
-	/* try to save changes on CTRL+Enter */
+	/* try to save changes on Enter */
 	var saveAction = function (event) {
-		if (event.ctrlKey && event.which==13){
+		if (event.which==13){
 			event.preventDefault();
 			$.post('class/ajax.php',{
 				update: true,
@@ -87,10 +96,16 @@ $(document).ready(function(event){
 
 	/* load module specifications via ajax */
 	$('.tr_modul').on("click",function () {
+		/* reset any markers from table rows */
 		$('.active').removeClass('active');
 		$(this).addClass('active');
+		
+		/* fetch modul_nr */
 		var id = $(this).children()[0].innerHTML;
-
+		
+		/* reset state variable for todo editor */
+		isEditingTodo=false;
+		
 		/* fetch and display required modules */
 		$.post('class/ajax.php',{
 			required_mods: id,
@@ -111,17 +126,22 @@ $(document).ready(function(event){
 				$('#right #hanoks').append("<div id='hanok_data'>"+jsonData[0].hanoks+"</div>");
 	    	$('#right #hanoks').find('dd table tbody tr:nth-of-type(odd)').
 	    		on("click",showHideHanoks);
+				/* add todo stuff */
 	    	$('#right #todo').empty();
-	    	$('#right #todo').append("<h2 title='Dblclick to edit, CTRL+ENTER to save changes'>TODO</h2>");
+	    	$('#right #todo').append("<h2>TODO </h2>");
+	    	/* add edit buton */
+	    	$('#right #todo h2').append("<span id='btn_edit_todo' title='Edit' style='color:red;font-size: 0.7em' class='glyphicon glyphicon-edit'></span>");
+	    	//enable onclick function
+	    	$('#btn_edit_todo').on('click',editTodo);
+
+	    	/* add required data attributes */
 	    	$('#right #todo').attr("data-id",jsonData[0].modul_nr);
 	    	if (jsonData[0].todo!== 'undefined'){
 		    	$('#right #todo').append('<div data-col="todo" id="todo_content">'+jsonData[0].todo+'</div>');
-		    	
 		    }
 				else{
 					$('#right #todo').append('<div data-col="todo" id="todo_content">&nbsp;</div>');
 				}		    
-		    $('#todo_content').on("keypress",saveAction);
 				
 			});
 			
@@ -136,21 +156,26 @@ $(document).ready(function(event){
 			/*event.removeEvent(this);*/
 			$.get($(this).attr('data'), null, function (data, success) {
 				if (data !=""){
+					/* create giant overlay */
 					$('body').append("<div id='sOverlay'><div id='sCenter'></div></div>");
-					$('#sCenter').append('<p style="text-align: center;font-size:0.8em;color:blue;">ESC to close</p>');
+					/* add close info and link */
+					$('#sCenter').append('<p style="text-align: center;font-size:0.8em;color:blue;" onclick="$(\'#sOverlay\').remove();">Click here or press ESC to close</p>');
+					/* eventually add data :) */
 					$('#sCenter').append(data);
 				}
 				
 			})
 			.fail(function () { //error function
 					$('body').append("<div id='sOverlay'><div id='sCenter'></div></div>");
-					$('#sCenter').append('<p style="text-align: center;font-size:0.8em;color:blue;">ESC to close</p>');
+					$('#sCenter').append('<p style="text-align: center;font-size:0.8em;color:blue;" onclick="$(\'#sOverlay\').remove();">Click here or press ESC to close</p>');
+					
 					$('#sCenter').append('<h3 style="text-align:center; margin-top: 25%;">LBV nicht verfügbar :|</h3>');
 				
 			})
 		});
 		});
-
+	
+	
 	/* dump lightbox on key_pressed */
 	$('body').keypress(function (event) {
 		if (event.key=="Escape") {
@@ -171,6 +196,7 @@ $(document).ready(function(event){
 			}
 	};
 
+	/* table filter function */
 	$('#s_fachschaft').on("change", function () {
 		var tableRows = $('#t_modules').find('tr.tr_modul');
 		switch($('#s_fachschaft').val()) {

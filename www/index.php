@@ -12,7 +12,7 @@
 		$pwd = $_SESSION['wiss_db']->quoteInput($_POST['cred']);
 		
 			if ($_SESSION['wiss_db']->checkCredentials($us, $pwd)==true){
-	        $_SESSION['login_user']="intern";
+	        $_SESSION['login_user']=$us;
 	    		$_SESSION['login_fail']=0;
 					setcookie(session_name(), session_id(),time()+3600);
 	    }
@@ -60,7 +60,7 @@
 					  <div class="usage">
 
 					  	<h4>Update 2016-12-15</h4>
-					  	<p><i>Ab sofort können Modul-Spezialisierung (API/SYS)) und Semester-Informationen in der Tabelle links per Doppelklick bearbeitet werden. Abspeichern der aktuellen Zelle wird mit CTRL+ENTER durchgeführt.</i></p>
+					  	<p><i>Ab sofort können Modul-Spezialisierung (API/SYS)) und Semester-Informationen in der Tabelle links per Doppelklick bearbeitet werden. Abspeichern der aktuellen Zelle wird mit <b>ENTER</b> durchgeführt.Nach erfolgreichem Speicher wird das Feld grün hinterlegt.</i></p>
 					  	<p><i>TODOs zu den jeweiligem Modul (rechts unter HANOKs) können ebenfalls per Doppelklick editiert werden. Dazu gibt es sogar einen einfachen WYSIWYG-Editor und einen <i>Save</i> Button.</p>
 							<p><i><span class="has_todo">Rot gekennzeichnete Module</span> haben bereits TODOs.</i></p>
 					  	

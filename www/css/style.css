@@ -131,6 +131,13 @@
 				color: red;
 			}
 			
+			/* manage left distance of save button... */
+			#todo_save{
+				margin-left: 20px;
+				font-size: 0.7em;
+				line-height: 1.3em;
+			}
+			
 			/* lightbox */
 			#sOverlay{
 				position: absolute;
