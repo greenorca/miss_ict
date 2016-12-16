@@ -61,11 +61,11 @@
 
 					  	<h4>Update 2016-12-15</h4>
 					  	<p><i>Ab sofort können Modul-Spezialisierung (API/SYS)) und Semester-Informationen in der Tabelle links per Doppelklick bearbeitet werden. Abspeichern der aktuellen Zelle wird mit <b>ENTER</b> durchgeführt.Nach erfolgreichem Speicher wird das Feld grün hinterlegt.</i></p>
-					  	<p><i>TODOs zu den jeweiligem Modul (rechts unter HANOKs) können ebenfalls per Doppelklick editiert werden. Dazu gibt es sogar einen einfachen WYSIWYG-Editor und einen <i>Save</i> Button.</p>
+					  	<p><i>TODOs zu den jeweiligem Modul (rechts unter HANOKs) können ebenfalls per Doppelklick editiert werden. Dazu gibt es sogar einen einfachen WYSIWYG-Editor und einen <b>Save</b> Button.</i></p>
 							<p><i><span class="has_todo">Rot gekennzeichnete Module</span> haben bereits TODOs.</i></p>
 					  	
 							<h4>Hinweis</h4>
-							<p>Die ist ein Prototyp zur übersichtlichen Darstellung der ICT-Module im Rahmen der EFZ-Ausbildung Informatiker (API & SYS). Als solches sind die gelieferten Daten insbesondere für Fachschaften ausserhalb DB, API und WEB oft unvollständig. </p> 
+							<p>Die ist ein Prototyp zur übersichtlichen Darstellung der ICT-Module im Rahmen der EFZ-Ausbildung Informatiker (API &amp; SYS). Als solches sind die gelieferten Daten insbesondere für Fachschaften ausserhalb DB, API und WEB oft unvollständig. </p> 
 							<p>Fehlende (WISS)-LBVs können mit Modulnummer an <a href="mailto:schirmer@green-orca.com">schirmer@green-orca.com</a> gesendet werden.</p>		
 							<p>Die Darstellung folgt strikt dem Bauhaus-Prinzip: <i>Form follows function</i>. LBVs und Toolboxen sind von Word in HTML re-konvertiert, damit die Archivierbarkeit und Wartbarkeit sichergestellt ist.</p>			  
 							<p><b>Benutzung: </b>Module auf der linken Seite sowie LBV und HANOKs auf der rechten Seite sind klickbar.</p>
